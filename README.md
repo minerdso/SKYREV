@@ -1,32 +1,41 @@
-# skynerd
-BOT WHATSAPP PARA GERENCIARMENTO DE GRUPOS
+!#SKYNERD É UM BOT WHATSAPP PARA GERENCIARMENTOS
+
+![03d953c5a0ecde74634c4](https://user-images.githubusercontent.com/20786530/183045406-daaf12ee-c971-48ba-980b-98986045cc76.jpg)
+
+
+FUNCIONALIDADES / BOT
+
+
+1. GERENCIA GRUPOS
+
+2. ATENDIMENTO AUTOMÁTICO
+
+3. GERADOR DE TESTE SSH
+
+4. PAGAMENTOS AUTOMÁTICOS
+
+5. CONTEÚDOS ESPECÍFICOS PARA REVENDAS 
+
+
+
+POR QUE USAR O SKYNERD?
+
+
+1. AGILIDADE NO ATENDIMENTO FILTRANDO O CLIENTE A NÍVEL DE CONHECIMENTO.
+
+2. FLEXIBILIDADE PAR VENDAS. 
+
+3. ORGANIZO NO SEU SUPORTE EM GRUPOS, DEIXANDO POR CONTA DO BOT RESPONDER DUVIDAS VIGENTES.
 
 
 
 
 
 
+VISUAL PRIVADO
+![d8dcd6cddd0dbbb6a862c](https://user-images.githubusercontent.com/20786530/183045633-9a665ac5-8897-42a2-b4a9-60e12eef735d.jpg)
 
 
+VISUAL EM GRUPOS
+![45bf27c39d73f99d03950](https://user-images.githubusercontent.com/20786530/183045651-1669e677-dd2b-4b73-91e2-d0a3504c17c7.jpg)
 
-
-
-INSTALL VPS
-
-1-- sudo su
-
-2-- apt update && apt upgrade && apt-get install ruby -y && apt-get install lolcat -y && apt install 
-
-libwebp-dev -y && apt install ffmpeg -y && apt install wget && apt install tesseract-ocr && apt install 
-
-graphicsmagick && apt install imagemagick && apt install curl
-
-3-- curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
-
-4-- sudo bash nodesource_setup.sh
-
-5-- sudo apt install nodejs
-
-6-- apt install zip unzip
-
-7-- reboot
