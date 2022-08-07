@@ -1,17 +1,12 @@
 /*============≠≠==========≠≠=============\\
 
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
-skynerd mod minerd
 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
+NOD @BATMONN O MINERD = BASE DO ALEATORIO 
 
 //=======================================*/
 
@@ -27,13 +22,12 @@ const { validadekey, geradorkey, adeuscara, welcome_group, welcome_group2, bye_g
 
 //-_-_-_-_-_-_-_-_-_-_-JS-MENUS/INFORMAÇÕES-_-_-_-_-_-_-_-_-_-_\\
 
-const { menu, menudono, adms, efeitos, menuprem, infovotacao, infocontador, infobemvindo, infolistanegra, infopalavrao, infobancarac, infodono, gitdobot, configbot, hospedar, cmd_script, alteradores, destrava, destrava2, tabela, conselhob, palavras } = require('./consts-func.js')
+const { menu, menudono, adms, menulogos, efeitos, menuprem, brincadeiras ,infovotacao, infocontador, infobemvindo, infolistanegra, infopalavrao, infobancarac, infodono, gitdobot, configbot, hospedar, cmd_script, alteradores, destrava, destrava2, tabela, conselhob, palavras } = require('./consts-func.js')
 
 //_-_-_-_-_-_-_-_-_-_-_-_-(INFOS)_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--\\
 
 const { forwarding, imgnazista, imggay, imgcorno, imggostosa, imggostoso, imgfeio, imgvesgo, imgbebado, imggado, matarcmd, beijocmd, chutecmd, tapacmd } = require("./dono/nescessario.json")
 
-const pvzin = JSON.parse(fs.readFileSync('./dono/pvzin.json'))
 
 //====================≠≠===============\\
  
@@ -73,7 +67,7 @@ blocked = []
 
 hitt = []
 
-var keyale = "Key-saymon(MINERD)2.0"
+//var keyale = "Key-saymon(MINERD)2.0"
 
 //=====================================\\
 
@@ -83,7 +77,7 @@ async function startAle() {
   
 // ABAIXO: INÍCIO DE CONEXÃO
 
-var qrcode = "./MINERD-QR"
+var qrcode = "./SKYNERD.json"
 
 const { state, saveCreds } = await useMultiFileAuthState(qrcode)
 
@@ -119,7 +113,7 @@ const mdata_ = isGroup2 ? await conn.groupMetadata(sky.id): ""
 
 const dbackid = []
 for(i=0;i<adeuscara.length;++i) dbackid.push(adeuscara[i].groupId)
-console.log(sky)
+console.log(ale)
 if(dbackid.indexOf(sky.id) >= 0) {
 if (sky.action == 'add'){ 
 num = sky.participants[0]
@@ -460,6 +454,8 @@ const isGroupAdmins = groupAdmins.includes(sender) || false
 const isWelkom2 = isGroup ? welkom2.includes(from) : true
 
 const isVote = isGroup ? voting.includes(from) : false
+
+const isModobn =  isGroup ? modobn.includes(from) : true
 
 const isNsfw =  isGroup ? nsfw.includes(from) : true
 
@@ -940,6 +936,7 @@ console.log(e)
 })
 }
 
+
 var nmrdnofc1 = setting.numerodono.replace(new RegExp("[()+-/ +/]", "gi"), "")
 
 if(isGroup && fs.existsSync(`./func/afk/afk-@${nmrdnofc1}.json`)) {
@@ -1049,50 +1046,18 @@ clearInterval(myinterval);
 }, 1000)
 }
 
-if(SoDono && budy.includes("reiniciar-sky") || info.key.fromMe && budy.includes("reiniciar-sky")) {
+if(SoDono && budy.includes("reiniciar-ale") || info.key.fromMe && budy.includes("reiniciar-ale")) {
 fs.writeFileSync("./cnt-upd.json",JSON.stringify([], null, 2))
 console.log(banner3.string)   
 console.log(banner2.string)  
 console.log(color(
-`〔 - _ SKYNERD _ - Por Ordem do meu Dono irei reiniciar..... 〕`))
+`〔 - _ SKYNERD 1.1_ - Por Ordem do meu Dono irei reiniciar..... 〕`))
 setTimeout(() => {
 startAle()
 }, 500)
 setTimeout(() => {
 fs.unlinkSync("./cnt-upd.json")
 }, 1500)
-}
-
-if(!isGroup && !info.key.fromMe && ['opa', 'bom dia', 'boa tarde', 'boa noite', 
-'oi', 'opa', 'minerd'].indexOf(budy.toLowerCase()) != -1){ sendBimgT(from, `${logo}`, 
-`Olá seja muito bem vindo ao bot Skynerd\nOq deseja?`, "", [{index: 1, 
-urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}}, 
-{index: 2, urlButton: {displayText: 'ALUGUE NOSSO BOT', url: 
-'https://wa.me/+5511949356144'}}, {index: 2, quickReplyButton: {displayText: 
-'?? SOBRE A INTERNET⚡', id: `${prefix}hospedar`}}, {index: 2, 
-quickReplyButton: {displayText: '♨️ IPTV ??', id: `${prefix}iptv`}}, {index: 3, 
-quickReplyButton: {displayText: '⚓ TESTE SSH GRATIS ⚓', id: 
-`${prefix}sshgratis`}}], selo)
-}else if(!isCmd && !isGroup && !info.key.fromMe){
-if(pvzin.length < 1||!pvzin.map(i => i.id).includes(sender)){
-if(pvzin.length < 1||pvzin.map(i => i.id).indexOf(sender) < 0){
-sendBimgT(from, `${logo}`, `Olá seja muito bem vindo sou Skyner e vou atender você agora. Me diaga o que precisa?`, "", [{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
-{index: 2, urlButton: {displayText: 'ALUGUE NOSSO BOT', url: 'https://wa.me/+5511949356144'}},
-{index: 2, quickReplyButton: {displayText: '💥 SOBRE A INTERNET⚡', id: `${prefix}hospedar`}},
-{index: 2, quickReplyButton: {displayText: '♨️ IP-TV 🔱', id: `${prefix}`}},
-{index: 3, quickReplyButton: {displayText: '⚓ TESTE SSH GRATIS ⚓', id: `${prefix}sshgratis`}}], selo)
-pvzin.push({id:sender, date:date})
-fs.writeFileSync('./dono/pvzin.json', JSON.stringify(pvzin))
-}else if(pvzin[pvzin.map(i => i.id).indexOf(sender)].date != date){
-sendBimgT(from, `${logo}`, `Olá seja muito bem vindo sou Skyner e vou atender você agora. Me diaga o que precisa?`, "", [{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
-{index: 2, urlButton: {displayText: 'ALUGUE NOSSO BOT', url: 'https://wa.me/+5511949356144'}},
-{index: 2, quickReplyButton: {displayText: '💥 SOBRE A INTERNET⚡', id: `${prefix}hospedar`}},
-{index: 2, quickReplyButton: {displayText: '♨️ IP-TV 🔱', id: `${prefix}iptv`}},
-{index: 3, quickReplyButton: {displayText: '⚓ TESTE SSH GRATIS ⚓', id: `${prefix}sshgratis`}}], selo)
-pvzin.push({id:sender, date:date})
-fs.writeFileSync('./dono/pvzin.json', JSON.stringify(pvzin))
-}
-}
 }
 
 //========================================\\
@@ -1280,6 +1245,160 @@ if(isCmd && isGroup) console.log(`${colors.brightGreen("[ COMANDO ]")} - [ ${col
 
 if(!isCmd && isGroup && !info.key.fromMe) console.log(`${colors.brightMagenta("[ MENSAGEM ]")} - [ ${colors.brightWhite(sender.split("@")[0])} ] ${colors.brightCyan(`- [ NO GRUPO ] : [ ${groupName} ]`)}`)
 
+//======(JOGO-DA-VELHA)=======(Função)===\\
+
+async function joguinhodavelha() {
+if(joguinhodavelhajs2.includes(from) || joguinhodavelhajs.includes(sender)) {
+const cmde = budy.toLowerCase().split(" ")[0] || "";
+let arrNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+if (fs.existsSync(`./armor/tictactoe/db/${from}.json`)) {
+const boardnow = setGame(`${from}`);
+if (budy == "Cex") return reply("why");
+if (
+budy.toLowerCase() == "s" ||
+budy.toLowerCase() == "sim" ||
+budy.toLowerCase() == "ok"
+) {
+if (boardnow.O == sender.replace("@s.whatsapp.net", "")) {
+if (boardnow.status)
+return reply(`O jogo já começou antes!`);
+const matrix = boardnow._matrix;
+boardnow.status = true;
+fs.writeFileSync(`./armor/tictactoe/db/${from}.json`,
+JSON.stringify(boardnow, null, 2)
+);
+const chatAccept = `*🎮Ꮐ̸Ꭺ̸Ꮇ̸Ꭼ̸ Ꭰ̸Ꭺ̸ Ꮩ̸Ꭼ̸Ꮮ̸Ꮋ̸Ꭺ̸🕹️*
+                    
+❌ : @${boardnow.X}
+⭕ : @${boardnow.O}
+               
+Sua vez... : @${boardnow.turn == "X" ? boardnow.X : boardnow.O}
+
+${matrix[0][0]}  ${matrix[0][1]}  ${matrix[0][2]}
+${matrix[1][0]}  ${matrix[1][1]}  ${matrix[1][2]}
+${matrix[2][0]}  ${matrix[2][1]}  ${matrix[2][2]}
+`;
+conn.sendMessage(from, {text: chatAccept}, {quoted: info,
+contextInfo: {
+mentionedJid: [
+boardnow.X + "@s.whatsapp.net",
+boardnow.O + "@s.whatsapp.net", 
+],
+},
+});
+}
+} else if (
+budy.toLowerCase() == "n" ||
+budy.toLowerCase() == "não" ||
+budy.toLowerCase() == "no"
+) {
+if (boardnow.O == sender.replace("@s.whatsapp.net", "")) {
+if (boardnow.status)
+return reply(`O jogo já começou!`);
+fs.unlinkSync(`./armor/tictactoe/db/${from}.json`);
+ conn.sendMessage(from, {text:
+ `@${boardnow.X} *_Infelizmente seu oponente não aceitou o desafio ❌😕_*`}, {quoted: info,
+ contextInfo: {
+ mentionedJid: [boardnow.X + "@s.whatsapp.net"],
+},
+}
+);
+joguinhodavelhajs.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs))
+joguinhodavelhajs2.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+}
+}
+}
+
+if (arrNum.includes(cmde)) {
+const boardnow = setGame(`${from}`);
+if (!boardnow.status) return reply(`Parece que seu oponente não aceitou o desafio ainda...`)
+if (
+(boardnow.turn == "X" ? boardnow.X : boardnow.O) !=
+     
+sender.replace("@s.whatsapp.net", "")
+)
+return;
+const moving = validmove(Number(budy), `${from}`);
+const matrix = moving._matrix;
+if (moving.isWin) {
+if (moving.winner == "SERI") {
+const chatEqual = `*🎮Ꮐ̸Ꭺ̸Ꮇ̸Ꭼ̸ Ꭰ̸Ꭺ̸ Ꮩ̸Ꭼ̸Ꮮ̸Ꮋ̸Ꭺ̸🕹️*
+          
+Jogo termina empatado 😐
+`;
+reply(chatEqual);
+fs.unlinkSync(`./armor/tictactoe/db/${from}.json`);
+joguinhodavelhajs.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs)) 
+joguinhodavelhajs2.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+return;
+}
+const abt = Math.ceil(Math.random() + 4000)
+const winnerJID = moving.winner == "O" ? moving.O : moving.X;
+const looseJID = moving.winner == "O" ? moving.X : moving.O;
+const limWin = Math.floor(Math.random() * 1) + 10;
+const limLoose = Math.floor(Math.random() * 1) + 5;
+const chatWon = `*🎮Ꮐ̸Ꭺ̸Ꮇ̸Ꭼ̸ Ꭰ̸Ꭺ̸ Ꮩ̸Ꭼ̸Ꮮ̸Ꮋ̸Ꭺ̸🕹️*
+          
+Vencido por @${winnerJID} 😎👑
+`;
+addLevelingXp(winnerJID + "@s.whatsapp.net", abt)
+
+conn.sendMessage(from, {text: chatWon}, {quoted: info,
+contextInfo: {
+mentionedJid: [
+moving.winner == "O" ?
+moving.O + "@s.whatsapp.net" :
+moving.X + "@s.whatsapp.net",
+],
+},
+});
+setTimeout( () => {
+if (fs.existsSync("./armor/tictactoe/db/" + from + ".json")) {
+ fs.unlinkSync("./armor/tictactoe/db/" + from + ".json");
+ reply(`*🕹️JOGO DA VELHA RESETADO...🕹️*`);
+ } else {
+console.log(color(time, "red"), color("[ ESPIRADO ]", "magenta"), color('Jogo da velha espirado', "red"));
+ }
+joguinhodavelhajs.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs))
+joguinhodavelhajs2.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+}, 300000) //5 minutos
+reply(`_*🥳Parabéns @${winnerJID} Você ganhou "${abt}" em xp por ter ganhado o jogo da velha🎉...*_`)      
+fs.unlinkSync(`./armor/tictactoe/db/${from}.json`);
+joguinhodavelhajs.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs)) 
+joguinhodavelhajs2.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+} else {
+const chatMove = `*🎮Ꮐ̸Ꭺ̸Ꮇ̸Ꭼ̸ Ꭰ̸Ꭺ̸ Ꮩ̸Ꭼ̸Ꮮ̸Ꮋ̸Ꭺ̸🕹️*
+          
+❌ : @${moving.X}
+⭕ : @${moving.O}
+
+Sua vez : @${moving.turn == "X" ? moving.X : moving.O}
+
+${matrix[0][0]}  ${matrix[0][1]}  ${matrix[0][2]}
+${matrix[1][0]}  ${matrix[1][1]}  ${matrix[1][2]}
+${matrix[2][0]}  ${matrix[2][1]}  ${matrix[2][2]}
+`;
+conn.sendMessage(from, {text: chatMove}, {quoted: info,
+contextInfo: {
+mentionedJid: [
+moving.X + "@s.whatsapp.net",
+moving.O + "@s.whatsapp.net",
+],
+},
+});
+}
+} 
+} 
+}
+
 //=================================\\
 
 async function AntilinkHardF() {
@@ -1303,6 +1422,7 @@ conn.groupParticipantsUpdate(from, [sender], 'remove')
 }
 } 
 AntilinkHardF()
+joguinhodavelha()
 
 if(isUrl(body) && isAntilinkgp && isGroup && isBotGroupAdmins) {
 if(!isAntilinkgp) return
@@ -1525,6 +1645,30 @@ return
 }
 }
 
+//========(ANTI-PV-QUE-BLOQUEIA)======\\
+if(isAntiPv && !isGroup && !SoDono && !isnit && !isPremium){ 
+msgpvblock = `./func/call/msg_block-${sender}.json`
+fs.writeFileSync(msgpvblock, JSON.stringify("_- PROGRAMAÇÃO DE - _\n\n BLOQUEAR / USUARIOS POR ENVIAR MENSAGEM PARA O BOT\n\n_- REALIZANDO AÇÃO _-", null, 2))
+msgmsglbl = JSON.parse(fs.readFileSync(msgpvblock))
+reply(msgmsglbl)
+fs.unlinkSync(msgpvblock)
+setTimeout(async () => {
+conn.updateBlockStatus(sender, 'block')
+}, 2000)
+return
+}
+//======================================\\
+
+
+//=========(ANTIPV-QUE-SÓ-FALA)==========\\
+
+if(!isGroup && !isPremium && !SoDono && !isnit && !issupre && !ischyt && !info.key.fromMe && banChats === true) return reply(`Olá, sou uma inteligência artificial, programado(a) para realizar ações, por adms e o dono, se você está enviando mensagem, provavelmente você não sabe disso, eu removo diariamente pessoas por enviar links e muito mais..`)
+const atibot = info.isBaileys
+if (atibot === true) return 
+
+
+//======================================\\
+
 // ANTI_LIGAR \\
 
 if(!isGroup && isAnticall) {
@@ -1601,6 +1745,34 @@ if (isBanned) return
 BannedExpired(ban)
 
 if (isCmd && !SoDono && !isnit) addFilter(sender)
+
+//function gerarKey(){
+//pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'.split('');
+//    const result = [];
+//   for (let i = 0; i < 10; i++) result.push(pool[Math.floor(Math.random() * pool.length)]);
+//    return result.join('');
+//}
+
+//function validarKey(key){
+//let valido;
+//if(geradorkey.indexOf(key) < 0)var valido = true
+//return valido
+//}
+
+
+//if(command == 'check-key'){
+//if(validadeKey.indexOf(from) >= 0)return reply('Vc já cadastrou a chave')
+//if(!validarKey(q))return reply('Chave incorreta')
+//validadekey.push(from)
+//fs.writeFileSync('./armor/validadekey.json', JSON.stringify(validadekey))
+//}else if(SoDono && command == 'gerar-key'){
+//var key = gerarKey()
+//reply(`*Key Gerada com sucesso*\n\n*Chave:* ${key}`)
+//geradorkey.push(key)
+//fs.writeFileSync('./armor/geradorkey.json', JSON.stringify(geradorkey))
+//}else if(validadeKey.indexOf(from) < 0 && isCmd){
+//return reply('Ops Não foi possível fazer essa ação pois vc não cadastrou uma chave\n\nPara cadastrar digite: '+prefix+'check-key chave')
+//}
 
 //INICIO DE COMANDO DE PREFIXO
 switch(command) {
@@ -1702,10 +1874,11 @@ case 'menu2':
 botaoale = [
 {title: "Section 1",
 rows: [
-{title: "Nossos serviços´", rowId: `${prefix}menu`},
-{title: "PAGAMENTOS", rowId: `${prefix}menuadm`},
-{title: "Gerar teste Ssh", rowId: `${prefix}sshgratis`},
-{title: "SupoerteInformações do proprietário", rowId: `${prefix}infodono`},
+{title: "Menu de Comandos", rowId: `${prefix}menu`},
+{title: "Funções de Administradores do grupo", rowId: `${prefix}menuadm`},
+{title: "Logos de texto em fotos / Efeitos", rowId: `${prefix}menulogos`},
+{title: "Ssh gratis", rowId: `${prefix}sshgratis`},
+{title: "Informações do proprietário", rowId: `${prefix}infodono`},
 {title: "informaçao sobre a internet", rowId: `${prefix}hospedar`},
 {title: "Audio informando sobre o bot", rowId: `${prefix}infobot`, description: "Lista de menus de comandos / informando.."}]
 }]
@@ -1717,10 +1890,9 @@ if(menu_audio === true) {
 audiomenu = await fs.readFileSync("./audios/menucmd.mp3")
 conn.sendMessage(from, {audio: audiomenu, mimetype: 'audio/mp4', ptt:true}, {quoted: info})
 }
-sendBimgT(from, `${logo}`, menu(prefix, NomeDoBot), "", [{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
-{index: 2, urlButton: {displayText: 'ALUGUE NOSSO BOT', url: 'https://wa.me/+5511949356144'}},
+sendBimgT(from, `${logo}`, menu(prefix, NomeDoBot), "", [{index: 1, urlButton: {displayText: 'CURTA O CANAL', url: 'https://t.me/batmonn'}},
 {index: 2, quickReplyButton: {displayText: '💥 SOBRE A INTERNET⚡', id: `${prefix}hospedar`}},
-{index: 2, quickReplyButton: {displayText: '☂️ MENU ADMNISTRADORES ☔', id: `${prefix}menuadm`}}, 
+{index: 2, quickReplyButton: {displayText: '☂️ COMANDOS PARA ADMS ☔', id: `${prefix}menuadm`}}, 
 {index: 3, quickReplyButton: {displayText: '⚓ TESTE SSH GRATIS ⚓', id: `${prefix}sshgratis`}}], selo)
 break
 
@@ -1738,45 +1910,6 @@ fs.writeFileSync('./dono/nescessario.json', JSON.stringify(nescessario, null, '\
 reply(`- O Áudio foi Desativado do menu _- COM SUCESSO - _\n\nSe quiser Ativar - Só digitar o comando novamente`) 
 }
 break
-
-case 'menu':
-case 'help':
-case 'comandos':
-sendBimg(from, `${logo}`, menu(prefix, NomeDoBot), "GUIA DE COMANDOS", [{buttonId: `${prefix}sshgratis`, buttonText: {displayText: `🤡 TESTE SSH GRATIS 🤡`}, type: 1}, {buttonId: `${prefix}infodono`, buttonText: {displayText: `🔸 INFORMAÇÕES DO DONO 🔸`}, type: 1}], selo) 
-break 
-
-case 'sshgratis':
-server = await fetchJson(`https://api.gestorvip.com/minerd/1.php`)
-if (server.error) return reply(server.error)
-ccg =
-`
-
-*👤USUARIO:* ${server.user}
-*🔒SENHA:* ${server.pass}
-*⏳DIAS RESTANTES:* ${server.valid}
-*🔥LIMITE:* ${server.limit}
-*📌LOCAL:* ${server.local}
-*STATUS:* ${server.type}
-*MENSAGEM DO ADM:* ${server.message}\n`
-wew = fs.readFileSync('./logos/ssh.jpg')
-await conn.sendMessage(from, {image: wew, caption: ccg,},{quoted:info, quoted: selo})
-sendBtext(from, "*PLAYSTORE SELECIONE SKYNERD*", `https://play.google.com/store/apps/details?id=com.conecta4g.mister`, [
-{buttonId: `${prefix}menu`, buttonText: {displayText: `voltat ao menu`}, type: 1}])
-
-break
-
-case 'iptv':
-reply('Desde já agradecemos pelo contato! Você está prestes a usufruir dos serviços da maior plataforma de streaming da América Latina! Com todos os canais disponíveis em território brasileiro, português, americano, africano e asiático Cerca de 8000 filmes, 2260 series completas. Tudo isso por apenas R$35,00 mensais🤗🤗 Para você conhecer melhor o nosso serviço, gostaríamos de lhe proporcionar um teste gratuito e sem compromisso por 3h. Você tem disponibilidade para testar agora? Escolha /A para sim /B para não')
-await delay(3000)
-
-break
-
-break
-case '/A':
-reply('Meu Minas: Excelente!👏👏👏  Para usar o nosso serviço vc só precisa ter internet e um aparelho compatível. Por favor escolha uma das opções abaixo na qual você gostaria de testar gratuitamente pelas próximas 4h Digite (3) para TV SMART (4) para TV BOX (5) para COMPUTADOR WINDOWS (6) para CELULAR ANDROID (7) para CELULAR IOS (iPhone) [01:11, 04/08/2022] Meu Minas: Que pena ! ☹☹ Mas não esquenta! Volte a nos chamar aqui quando tiver um tempinho!  Combinado ? Temos certeza que você vai amar todo conteúdo que iremos te apresentar ! 🤗🤗 Aguardamos o seu contato então , tá bem? Abraços e até já 🤝')
-await delay(3000)
-break
-
 
 case 'menuadm':
 case 'menuadms':
@@ -1796,7 +1929,7 @@ case 'efeitos':
 case 'efeitoimg':
 case 'efeitosmarcar':  
 sendBimg(from, `${logo}`, efeitos(prefix), `🌀`, [
-{buttonId: `${prefix}sshgratis`, buttonText: {displayText: `🤡 TESTE SSH GRATIS 🤡`}, type: 1}, {buttonId: `${prefix}menu`, buttonText: {displayText: `🔸 MENU 🔸`}, type: 1}], selo)
+{buttonId: `${prefix}sshgratis`, buttonText: {displayText: `🤡 TESTE SSH GRATIS 🤡`}, type: 1}, {buttonId: `${prefix}logos`, buttonText: {displayText: `💥 MENU DE LOGOS ⚡`}, type: 1}, {buttonId: `${prefix}menu`, buttonText: {displayText: `🔸 MENU 🔸`}, type: 1}], selo)
 break 
 
 case 'owner':
@@ -1809,6 +1942,12 @@ break
 
 case 'alteradores':
 await conn.sendMessage(from, {image: {url: logo}, caption: alteradores(prefix)}, {quoted: selo})
+break 
+
+case 'brincadeiras':
+case 'brincadeira':
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`) 
+await conn.sendMessage(from, {image: {url: logo}, caption: brincadeiras(prefix)}, {quoted: selo})
 break 
 
 case 'menupremium':
@@ -1837,6 +1976,59 @@ if (!isPremium && !isGroupAdmins) return reply(enviar.msg.premium)
 await conn.sendMessage(from, {text: destrava(prefix)}, {quoted: info})
 break 
 
+case 'perfil':
+try {
+ppimg = await conn.profilePictureUrl(`${sender.split('@')[0]}@c.us`, 'image')
+} catch {
+ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+
+var conselho = palavras[Math.floor(Math.random() * palavras.length)]
+const nivelgado = ['1','2','3','4','5','6','7','8','9']
+const nivelgado2 = ['1','2','3','4','5','6','7','8','9'] 
+const nivelgador = nivelgado[Math.floor(Math.random() * (nivelgado.length))]
+const nivelgado2r = nivelgado2[Math.floor(Math.random() * (nivelgado2.length))] 
+const puta = ['1','2','3','4','5','6','7','8','9']
+const puta2 = ['1','2','3','4','5','6','7','8','9'] 
+const putar = puta[Math.floor(Math.random() * (puta.length))]
+const putar2 = puta2[Math.floor(Math.random() * (puta2.length))] 
+const gostosura = ['1','2','3','4','5','6','7','8','9']
+const gostosura2 = ['1','2','3','4','5','6','7','8','9'] 
+const gostosurar = gostosura[Math.floor(Math.random() * (gostosura.length))]
+const gostosurar2 = gostosura2[Math.floor(Math.random() * (gostosura2.length))] 
+gadop = `${Math.floor(Math.random() * 100)}`
+const programa = Math.ceil(Math.random() * 10000)
+const asLvl = getLevelingLevel(sender)
+const ssXp = getLevelingXp(sender)
+const dptr = `     「 🔥 ~_*PERFIL*_~ 🌈 」
+🗒 *Nome* : *${pushname}*
+🪀 *Número* : @${sender.split("@")[0]}
+🐂 *Nível gado* : *${nivelgador}${nivelgado2r}%*
+📱 *Seu Célular* : ${info.key.id.length > 21 ? 'Android 🤣' : info.key.id.substring(0, 2) == '3A' ? 'IOS😂😂😅' : 'Zap zap web 😂😂☝🏼😅'}
+😈 *Nível puta* : *${putar}${putar2}%*
+😋 *Nível de gostosura* : *${gostosurar}${gostosurar2}%*
+🍼 *Valor do programa* : *R$${programa}*
+
+➻ *~_CONSELHO_~* :
+${conselho}`
+conn.sendMessage(from, {image: {url: ppimg}, caption: dptr}, {quoted: selo})
+break
+
+case 'conselhobiblico':
+case 'conselhosbiblico':  
+case 'conselhosb':   
+case 'conselhob':  
+var conselhosb = conselhob[Math.floor(Math.random() * conselhob.length)]   
+jr = `${tempo} ${pushname} 
+
+Conselhos Bíblico para você: 
+
+- ${conselhosb} 
+
+> Bot: ${NomeDoBot}
+> Grupo: ${groupName}`
+await conn.sendMessage(from, {text: jr}, {quoted:info, contextInfo: {"mentionedJid": jr}})
+break
 
 case 'tabela':
 await conn.sendMessage(from, {text: tabela(prefix, NomeDoBot)}, {quoted: selo})
@@ -2122,6 +2314,7 @@ statuszada =
 │➱ AntiContato ${isAntiCtt ? '✓' : '✕'}
 │➱ AntiSticker: ${isAntiSticker ? '✓' : '✕'}
 │➱ Antiligação: ${isAnticall ? '✓' : '✕'}
+│➱ AntiPv-Block: ${isAntiPv ? '✓' : '✕'}
 │➱ AntilinkHard: ${isAntiLinkHard ? '✓' : '✕'}
 │➱ LimiteCaracteres: ${isAntiFlood ? '✓' : '✕'}
 │➱ AntiCatalogo: ${isAnticatalogo ? '✓' : '✕'}
@@ -2130,6 +2323,7 @@ statuszada =
 │➱ AntiLocalização: ${Antiloc ? '✓' : '✕'}
 │➱ Bemvindo: ${isWelkom ? '✓' : '✕'}
 │➱ Simih: ${isSimi ? '✓' : '✕'}
+│➱ Modo brincadeira: ${isModobn ? '✓' : '✕'}
 │
 ╰╼╾❲ ${NomeDoBot} ❳╼╾╯`
 conn.sendMessage(from, {image: {url: logo}, caption: statuszada, thumbnail: null})
@@ -2345,7 +2539,7 @@ break
 
 case 'reviverqr':
 if(!SoDono && !isnit) return 
-exec("cd MINERD-QR && rm -rf pre-key* sender* session*")
+exec("cd ALEATORY-QR* && rm -rf pre-key* sender* session*")
 setTimeout(async () => {
 reply("Reiniciando..")
 setTimeout(async () => {
@@ -2672,6 +2866,26 @@ conn.groupParticipantsUpdate(from, [obj.id], 'remove')
 }
 break
 
+case 'correio':
+txt = body.slice(10)
+txtt = args.join(" ")
+txt1 = txt.split("/")[0];
+txt2 = txtt.split("/")[1];
+if(!txt) return reply('Cade o número da pessoa?')
+if(!txtt) return reply('Cade a mensagem do correio??')
+if(txt.includes("-")) return reply('Tem que ser o número junto sem +, e não pode tá separado da /')
+if(txtt.includes("+")) return reply('Tem que ser o número junto sem +, e não pode tá separado da /')
+if(!txtt.includes("/")) return reply(`Exemplo: ${prefix}correio 558198923680/Oi Amor, sdds`)
+bla = 
+`╭┄━┄━┄━┄━┄━╮
+┞┧ ⸙. ͎۪۫          💌  ː͡₊ꞋꞌꞋꞌ
+┞┧Correio anônimo. 
+┞┧Msg: ${txt2}
+┞┧
+╰┄━┄━┄━┄━┄━╮`
+conn.sendMessage(`${txt1}@s.whatsapp.net`, {text: bla})
+break
+
 case 'nome-bot':
 if (!SoDono  && !isnit && !info.key.fromMe) return reply(enviar.msg.donosmt)  
 NomeDoBot = args.join(" ") 
@@ -2857,6 +3071,12 @@ await reply(`Error!\n${err}`)
 })
 break
 
+case 'envmsg':
+if(!SoDono && !isnit) return
+var [tx1, tx2] = q.split("/")
+conn.sendMessage(tx1, {text: tx2})
+break
+
 case 'bcgp':
 case 'bcgc':  
 if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe) return reply(enviar.msg.donosmt)
@@ -2872,7 +3092,7 @@ conn.sendMessage(_.id, {image: buff}, {caption: `*「 TRANSMISSÃO 」*\n\nGrupo
 reply('')
 } else {
 for (let _ of fgp) {
-sendMess(_.id, `*「 TM SKYNERD 」*\n\nGrupo : ${groupName}\n Número : wa.me/${(sender.split('@')[0])}\nMensagem : ${body.slice(6)}`)
+sendMess(_.id, `*「 TRANSMISSÃO 」*\n\nGrupo : ${groupName}\n Número : wa.me/${(sender.split('@')[0])}\nMensagem : ${body.slice(6)}`)
 }
 reply('Grupo de transmissão bem-sucedido')
 } 
@@ -2889,8 +3109,8 @@ break
 
 case 'vemqrcode':
 if(!SoDono) return reply("Apenas Dono..")
-bla = fs.readFileSync("./MINERD-QR")
-conn.sendMessage(from, {document: bla, mimetype: 'document/json', fileName: 'ALEATORY-QR.json'})
+bla = fs.readFileSync("./SKYNERD.json")
+conn.sendMessage(from, {document: bla, mimetype: 'document/json', fileName: 'SKYNERD.json'})
 break
 
 case 'dono2':
@@ -3417,6 +3637,47 @@ reply('1 para ativar, 0 para desativar')
 }
 } catch {
 reply('Falha ao ativar')
+}
+break
+
+case 'antipvon':
+if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe ) return reply('Apenas Meu Dono')
+if (banChats) return await reply('já está ativo o modo antipv')
+banChats = true
+nescessario.banChats = banChats
+fs.writeFileSync('./dono/nescessario.json', JSON.stringify(nescessario, null, '\t'))
+await conn.sendMessage(from, {text: "*Sucesso alterado para modo antipv, pv não poderá ser utilizado"})
+break
+
+case 'antipvoff':
+if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe) return await reply('Apenas meu dono o owner')
+if (!banChats) return await reply('Nao estava ativado ainda')
+banChats = false
+nescessario.banChats = banChats
+fs.writeFileSync('./dono/nescessario.json', JSON.stringify(nescessario, null, '\t'))
+await conn.sendMessage(from, {text: "*Sucesso modo antipv desligado, pv liberado."})
+break
+
+case 'antipv':
+if (!SoDono) return reply(`Apenas dono pode ativar/desativar essa função..`)
+if (args.length < 1) return reply('1 pra ligar / 0 pra desligar')
+if (Number(args[0]) === 1) {
+if (isAntiPv) return reply('Ja esta ativo')
+antipv.push('Ativado')
+fs.writeFileSync('./datab/usuarios/antipv.json', JSON.stringify(antipv))
+reply('🌀 Ativou com sucesso o recurso de Anti Privado 📝')
+} else if (Number(args[0]) === 0) {
+if (!isAntiPv) return reply('Ja esta Desativado')
+pesquisar = 'Ativado'
+processo = antipv.indexOf(pesquisar)
+while(processo >= 0){
+antipv.splice(processo, 1)
+processo = antipv.indexOf(pesquisar)
+}
+fs.writeFileSync('./datab/usuarios/antipv.json', JSON.stringify(welkom))
+reply('‼️ Desativou com sucesso o recurso De ANTIPV✔️')
+} else {
+reply('1 para ativar, 0 para desativar')
 }
 break
 
@@ -4293,6 +4554,17 @@ reply(`Digite ${prefix + command} 1 para ativar, 0 para desativar o recurso`)
 }
 break
 
+case 'resetarttt':
+case 'rvttt':  
+if (!isGroup) return reply(enviar.msg.grupo)
+if (!isGroupAdmins) return reply(enviar.msg.adm)
+if (!isBotGroupAdmins) return reply(enviar.msg.Badmin)
+daily.splice([])
+fs.writeFileSync('./datab/usuarios/diario.json', JSON.stringify(daily))
+reply('‼️O jogo da velha TTT foi resetado com sucesso..✔️')
+reply(`${prefix}reiniciar`)
+break
+
 case 'reiniciar':
 if(!SoDono) return
 rp = (Date.now() / 1000) - info.messageTimestamp
@@ -4757,6 +5029,221 @@ reply('ERROR!!')
 })
 break
 
+//=============(LOGOS)=============\\
+
+
+
+//==========(PLAQUINHAS-LOGOS)===========\
+
+case 'placaloli':
+if (!q) return reply(enviar.wrongFormat)
+reply('Aguarde..')
+lod = await fetchJson(`https://nekobot.xyz/api/imagegen?type=kannagen&text=${q}`)
+sendStickerFromUrl(from, lod.message, enviar.success)
+await limitAdd(sender)
+break 
+
+//=======================================\\
+
+
+// LOGOS 
+
+case 'shadow':
+case 'angelwing':
+case 'efeitoneon':
+case 'cemiterio':
+case 'metalgold':
+case 'narutologo':
+case 'fire':
+case 'romantic':
+case 'smoke':  
+case 'papel':
+case 'lovemsg':
+case 'lovemsg2':
+case 'lovemsg3':
+case 'coffecup':
+case 'coffecup2':  
+case 'cup':
+case 'florwooden':
+case 'madeira':
+case 'neon2':
+case 'lobometal':
+case 'harryp':
+case 'txtborboleta':
+case 'blackpink':
+case 'girlmascote': 
+case 'logogame':
+case 'equipemascote':
+case 'fpsmascote':
+case 'hackneon':
+case 'ffavatar':
+case 'mascotegame':
+case 'wingeffect':
+case 'angelglx':
+case 'gizquadro':
+case 'txtquadrinhos':
+try {
+textin = args.join(" ")
+if(!textin) return reply("Cade o texto?")
+reply(enviar.espere)
+bla = await fetchJson(`https://aleatoryapi.herokuapp.com/api/${command}?texto=${textin}&apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.resultado.imageUrl}}, {quoted: info}).catch(rs =>{
+reply("ERROR!!")  
+})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break  
+
+case 'gameplay':
+case 'ffbanner':
+case 'mascoteavatar':  
+try {
+textin = args.join(" ")
+txt1 = textin.split("/")[0];
+txt2 = textin.split("/")[1];
+if(!textin) return reply("Cade o texto?")
+if(!textin.includes("/")) return reply(`Cade a / precisa dela para a separação..\nExemplo: ${prefix + command} Game/Play`)
+reply(enviar.espere)
+bla = await fetchJson(`https://aleatoryapi.herokuapp.com/api/${command}?texto=${txt1}&texto2=${txt2}&apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.resultado.imageUrl}}, {quoted: info}).catch(rs =>{
+reply("ERROR!!")  
+})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break
+
+case 'metadinha':
+try {
+bla = await fetchJson(`http://aleatoryapi.herokuapp.com/api/metadinha?apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.link1}})
+conn.sendMessage(from, {image: {url: bla.link2}})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break
+
+case 'googlesg':
+try {
+textin = args.join(" ")
+txt1 = textin.split("/")[0];
+txt2 = textin.split("/")[1];
+txt3 = textin.split("/")[2];
+if(!textin) return reply("Cade o texto?")
+if(!textin.includes("/")) return reply(`Cade a / precisa dela para a separação..\nExemplo: ${prefix + command} Game/Play/Sad`)
+reply(enviar.espere)
+bla = await fetchJson(`http://aleatoryapi.herokuapp.com/api/${command}?texto=${txt1}&texto2=${txt2}&texto3=${txt3}&apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.resultado.imageUrl}}, {quoted: info}).catch(rs =>{
+reply("ERROR!!")  
+})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break  
+
+case 'marvel': 
+case 'glitch':   
+case 'stone':   
+case 'space':
+case 'pornhub':
+case 'america':   
+case 'steel':  
+case 'grafity':  
+case 'glitch3':  
+try {
+texto = args.join(' ')
+texto1 = texto.split('/')[0] || 'Indefinido'
+texto2 = texto.split('/')[1] || 'Indefinido'
+if(!texto.includes("/")) return reply(`Cade a /\nExemplo: ${prefix + command} sad/sad`)
+reply(enviar.espere)
+bla = await fetchJson(`http://aleatoryapi.herokuapp.com/api/${command}?texto=${texto1}&texto2=${texto2}&apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.resultado}}, {quoted: info})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break
+
+case 'lava':
+case 'toxic':  
+case 'thunder': 
+case 'thunderv2':  
+case 'neongreen':	
+case 'neon':  
+case 'neon1':  
+case 'neon3d':  
+case 'demongreen':   
+case 'metalfire':  
+case 'rainbow':	  
+case 'gelo':
+case 'halloween':  
+case 'lapis':  
+case 'glitch':  
+case 'glitch2':   
+case '3dgold': 
+case 'neon3d':   
+case 'transformer':  
+case '3dstone':
+case 'fiction':
+case 'cattxt':
+case 'neondevil':
+case 'demonfire':
+case 'colaq':
+case 'luxury':
+case 'berry':
+case 'matrix':
+case 'horror':
+case 'nuvem':
+case 'neon3':
+case 'neve':
+case 'areia':
+case 'vidro':
+case 'style':
+case 'blood':
+case 'pink':
+case 'carbon':
+case 'metalblue': 
+case 'jeans':  
+case 'jokerlogo':   
+case 'natal': 
+case 'ossos':  
+case 'asfalto':	
+case 'break':  
+try {
+reply(enviar.espere)
+texto = args.join(" ") || 'Indefinido'
+if(!texto) return reply('Cade o texto?')
+bla = await fetchJson(`http://aleatoryapi.herokuapp.com/api/${command}?texto=${texto}&apikey=${keyale}`)
+conn.sendMessage(from, {image: {url: bla.resultado}}, {quoted: info})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break
+
 //========(SORTEIO-VOTAR-CASES)=========\\
 
 case 'delvote':
@@ -4974,6 +5461,32 @@ reply('1 para ativar, 0 para desligar')
 }
 break 
 
+case 'modobrincadeira':
+case 'modobrincadeiras':  
+if (!isGroup) return reply(enviar.msg.grupo)
+if (!isGroupAdmins) return reply(enviar.msg.adm)
+if (!isBotGroupAdmins) return reply(enviar.msg.Badmin)
+if (args.length < 1) return reply('1 pra ligar / 0 pra desligar')
+if (Number(args[0]) === 1) {
+if (isModobn) return reply('o modobrincadeira já está ativo')
+modobn.push(from)
+fs.writeFileSync('./datab/grupos/brincadeiras.json', JSON.stringify(modobn))
+reply('🎯 Ativou com sucesso o recurso de Modo brincadeira neste grupo 🪀')
+} else if (Number(args[0]) === 0) {
+if (!isModobn) return reply('o modobrincadeira já está Desativado')
+pesquisar = from
+processo = modobn.indexOf(pesquisar)
+while(processo >= 0){
+modobn.splice(processo, 1)
+processo = modobn.indexOf(pesquisar)
+}
+fs.writeFileSync('./datab/grupos/brincadeiras.json', JSON.stringify(modobn))
+reply('🎯 Desativou com sucesso o recurso de Modo brincadeira neste grupo 🪀')
+} else {
+reply('1 para ativar, 0 para desativar')
+}
+break
+
 case 'nick':
 case 'gerarnick':
 case 'fazernick':
@@ -5006,12 +5519,276 @@ break
 
 case 'chance':
 if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)  
 var avb = body.slice(7)
 if (args.length < 1) return conn.sendMessage(from, {text: `Você precisa digitar da forma correta\nExemplo: ${prefix}chance do luuck ser gay`}, {quoted: info})
 random = `${Math.floor(Math.random() * 100)}`
 hasil = `A chance ${body.slice(8)}\n\né de... ${random}%`
 await conn.sendMessage(from, {text: hasil, contextInfo: {mentionedJid: [sender]}}, {quoted: info})
 break
+
+case 'gay':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+
+conn.sendMessage(from, {text: `❰ Pesquisando a sua ficha de gay : @${blamention_id.split("@")[0]} aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+feio = random
+boiola = random
+if (boiola < 20 ) {var bo = 'hmm... você é hetero😔'} else if (boiola == 21 ) {var bo = '+/- boiola'} else if (boiola == 23 ) {var bo = '+/- boiola'} else if (boiola == 24 ) {var bo = '+/- boiola'} else if (boiola == 25 ) {var bo = '+/- boiola'} else if (boiola == 26 ) {var bo = '+/- boiola'} else if (boiola == 27 ) {var bo = '+/- boiola'} else if (boiola == 2 ) {var bo = '+/- boiola'} else if (boiola == 29 ) {var bo = '+/- boiola'} else if (boiola == 30 ) {var bo = '+/- boiola'} else if (boiola == 31 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 32 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 33 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 34 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 35 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 36 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 37 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 3 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 39 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 40 ) {var bo = 'tenho minha desconfiança...😑'} else if (boiola == 41 ) {var bo = 'você é né?😏'} else if (boiola == 42 ) {var bo = 'você é né?😏'} else if (boiola == 43 ) {var bo = 'você é né?😏'} else if (boiola == 44 ) {var bo = 'você é né?😏'} else if (boiola == 45 ) {var bo = 'você é né?😏'} else if (boiola == 46 ) {var bo = 'você é né?😏'} else if (boiola == 47 ) {var bo = 'você é né?😏'} else if (boiola == 4 ) {var bo = 'você é né?😏'} else if (boiola == 49 ) {var bo = 'você é né?😏'} else if (boiola == 50 ) {var bo = 'você é ou não?🧐'} else if (boiola > 51) {var bo = 'você é gay🙈'
+}
+await conn.sendMessage(from, {image: {url: imggay}, caption: `  O quanto você é gay? \n\n 「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱ gay 🏳️‍🌈\n\n${bo}`, mentions: [blamention_id], thumbnail:null}, {quoted: info})
+}, 7000)
+break
+
+case 'feio':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+
+conn.sendMessage(from, {text: `❰ Pesquisando a sua ficha de feio : @${blamention_id.split("@")[0]} aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+feio = random
+if (feio < 20 ) {var bo = 'É não é feio'} else if (feio == 21 ) {var bo = '+/- feio'} else if (feio == 23 ) {var bo = '+/- feio'} else if (feio == 24 ) {var bo = '+/- feio'} else if (feio == 25 ) {var bo = '+/- feio'} else if (feio == 26 ) {var bo = '+/- feio'} else if (feio == 27 ) {var bo = '+/- feio'} else if (feio == 2 ) {var bo = '+/- feio'} else if (feio == 29 ) {var bo = '+/- feio'} else if (feio == 30 ) {var bo = '+/- feio'} else if (feio == 31 ) {var bo = 'Ainda tá na média'} else if (feio == 32 ) {var bo = 'Da pra pegar umas(ns) novinha(o) ainda'} else if (feio == 33 ) {var bo = 'Da pra pegar umas(ns) novinha(o) ainda'} else if (feio == 34 ) {var bo = 'É fein, mas tem baum coração'} else if (feio == 35 ) {var bo = 'Tá na média, mas não deixa de ser feii'} else if (feio == 36 ) {var bo = 'Bonitin mas é feio com orgulho'} else if (feio == 37 ) {var bo = 'Feio e preguiçoso(a), vai se arrumar praga feia'} else if (feio == 3 ) {var bo = 'tenho '} else if (feio == 39 ) {var bo = 'Feio, mas um banho E se arrumar, deve resolver'} else if (feio == 40 ) {var bo = 'FeiN,  mas não existe gente feia, existe gente que não conhece os produtos jequity'} else if (feio == 41 ) {var bo = 'você é Feio, mas é legal, continue assim'} else if (feio == 42 ) {var bo = 'Nada que uma maquiagem e se arrumar, que não resolva 🥴'} else if (feio == 43 ) {var bo = 'Feio que dói de ver, compra uma máscara que melhora'} else if (feio == 44 ) {var bo = 'Feio mas nada que um saco na cabeça não resolva né!?'} else if (feio == 45 ) {var bo = 'você é feio, mas tem bom gosto'} else if (feio == 46 ) {var bo = 'Feio mas tem muitos amigos'} else if (feio == 47 ) {var bo = 'Feio mas tem lábia pra pegar várias novinha'} else if (feio == 4 ) {var bo = 'Feio e ainda não sabe se vestir, vixi'} else if (feio == 49 ) {var bo = 'Feiooo'} else if (feio == 50 ) {var bo = 'você é Feio, mas não se encherga 🧐'} else if (feio > 51) {var bo = 'você é Feio demais 🙈'} 
+
+await conn.sendMessage(from, {image: {url: imgfeio}, caption: `  O quanto você é feio? \n\n 「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱ feio 🙉\n\n${bo}`, mentions: [blamention_id], thumbnail:null}, {quoted: info})
+}, 7000)
+break 
+
+case 'matar':
+case 'mata':  
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('marque o alvo que você quer matar')
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+susp = `Você Acabou de matar o(a) @${mentioned[0].split('@')[0]} 😈👹` 
+await conn.sendMessage(from, {video: {url: matarcmd}, gifPlayback: true, caption: susp, mentions: mentioned}, {quoted: info})
+break 
+
+case 'corno':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:` ❰ Pesquisando a ficha de corno : @${blamention_id.split("@")[0]}, aguarde... ❱`, mentions: [blamention_id]})
+setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imgcorno}, caption: ` O quanto você é corno? \n\n 「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱  corno 🐃`, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break
+
+
+case 'vesgo':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:`❰ Pesquisando a ficha de vesgo : @${blamention_id.split("@")[0]}, aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imgvesgo}, caption: `O quanto você é vesgo? \n\n「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱  Vesgo 🙄😆`, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break 
+
+case 'bebado':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:`❰ Pesquisando a ficha de bebado : @${blamention_id.split("@")[0]} , aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imgbebado}, caption:`O quanto você é bebado? \n\n「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱ Bêbado 🤢🥵🥴`, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break 
+
+case 'gado':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:`❰ Pesquisando a ficha de gado : @${blamention_id.split("@")[0]}, aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imggado}, caption: `O quanto você é gado? \n\n「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱  gado 🐂`, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break 
+
+case 'gostoso':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:` ❰ Pesquisando a sua ficha de gostoso : @${blamention_id.split("@")[0]} aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imggostoso}, caption: `O quanto você é gostoso? 😏\n\n「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱ gostoso 😝`, gifPlayback: true, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break 
+
+case 'gostosa':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if(budy.includes("@")) {
+mention_id = args.join(" ").replace("@", "") + "@s.whatsapp.net"
+var blamention_id = mention_id
+}
+
+if(!budy.includes("@")) {
+var blamention_id = sender 
+}
+conn.sendMessage(from, {text:`❰ Pesquisando a sua ficha de gostosa : @${blamention_id.split("@")[0]} aguarde... ❱`, mentions: [blamention_id]})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imggostosa}, caption: `O quanto você é gostosa? 😏\n\n「 @${blamention_id.split("@")[0]} 」Você é: ❰ ${random}% ❱ gostosa 😳`, mentions: [blamention_id]}, {quoted: info})
+}, 7000)
+break
+
+case 'beijo':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('Marque alguém que vc quer da um beijo')
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+susp = `Você deu um beijo gostoso na(o) @${mentioned[0].split('@')[0]} 😁👉👈❤` 
+await conn.sendMessage(from, {video: {url: beijocmd}, gifPlayback: true, caption: susp, mentions: mentioned}, {quoted: info})
+break
+
+case 'tapa':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('marque o alvo que você quer dá o tapa')
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+susp = `Você Acabou de da um tapa na raba da😏 @${mentioned[0].split('@')[0]} 🔥` 
+await conn.sendMessage(from, {video: {url: tapacmd}, gifPlayback: true, caption: susp, mentions: mentioned}, {quoted: info})
+break
+
+case 'chute':
+case 'chutar':  
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('marque o alvo que você quer dá um chute')
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+susp = `Você Acabou de da um chute em @${mentioned[0].split('@')[0]} 🤡` 
+await conn.sendMessage(from, {video: {url: chutecmd}, gifPlayback: true, caption: susp, mentions: mentioned}, {quoted: info})
+break 
+
+case 'dogolpe':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+if (args.length < 1) return await conn.sendMessage(from, {text: 'coloca um nome'}, {quoted: info})
+pkt = body.slice(9)
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+random = `${Math.floor(Math.random() * 100)}`
+jpr = `*GOLPISTA ENCONTRADO👉🏻*\n\n*GOLPISTA* : *${args[0]}*\n*PORCENTAGEM DO GOLPE* : ${random}%😂\n\nEle(a) gosta de ferir sentimentos 😢`
+conn.sendMessage(from, {text: jpr, mentions: mentioned})
+break
+
+case 'shipo':
+teks = args.join(" ")
+if(teks.length < 10) return reply('Marque uma pessoa do grupo para encontrar o par dela')
+membrr = []
+const suamae111 = groupMembers
+const suamae211 = groupMembers
+const teupai111 = suamae111[Math.floor(Math.random() * suamae111.length)]
+const teupai211 = suamae211[Math.floor(Math.random() * suamae211.length)]
+var shipted1 = ["1%", `2%`, `3%`, `4%`, `5%`, `6%`, `7`, `%`, `9%`, `10`, `11%`, `12%`,`13%`, `14%`, `15%`, `16%`, `17%`, `1%`, `19%`, `20%`, `21%`, `22`, `23%`, `24%`, `25%`, `26%`, `27%`, `2%`, `27%`, `2%`, `29%`, `30%`, `31%`, `32%`, `33%`, `34%`, `35%`, `36%`, `37%`, `3%`, `39%`, `40%`, `41%`, `42%`, `43%`, `44%`, `45%`, `46%`, `47%`, `4%`, `49%`, `50%`, `51%`, `52%`, `53%`, `54%`, `55%`, `56%`, `57%`, `5%`, `59%`, `60%`, `61%`, `62%`, `63%`, `64%`, `65%`, `66%`, `67%`, `6%`, `69%`, `70%`, `71%`, `72%`, `73%`, `74%`, `75%`, `76%`, `77%`, `7%`, `79%`, `0%`, `1%`, `2%`, `5%`, `4%`, `5%`, `6%`, `7%`, `%`, `9%`, `90%`, `91%`, `92%`, `93%`, `94%`, `95%`, `96%`, `97%`, `9%`, `99%`, `100%`]
+const shiptedd = shipted1[Math.floor(Math.random() * shipted1.length)]
+jet = `*Hmmm.... Eu Shipo eles 2💘💘*\n\n1 = @${teupai111.id.split('@')[0]}\n && 2 = ${teks} com uma porcentagem de: ${shiptedd}`
+membrr.push(teupai111.id)
+membrr.push(teupai211.id)
+mentions(jet, membrr, true)
+break
+
+case 'casal':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+membr = []
+const suamae11 = groupMembers
+const suamae21 = groupMembers
+const teupai11 = suamae11[Math.floor(Math.random() * suamae11.length)]
+const teupai21 = suamae21[Math.floor(Math.random() * suamae21.length)]
+var shipted1 = ["1%", `2%`, `3%`, `4%`, `5%`, `6%`, `7`, `%`, `9%`, `10`, `11%`, `12%`,`13%`, `14%`, `15%`, `16%`, `17%`, `1%`, `19%`, `20%`, `21%`, `22`, `23%`, `24%`, `25%`, `26%`, `27%`, `2%`, `27%`, `2%`, `29%`, `30%`, `31%`, `32%`, `33%`, `34%`, `35%`, `36%`, `37%`, `3%`, `39%`, `40%`, `41%`, `42%`, `43%`, `44%`, `45%`, `46%`, `47%`, `4%`, `49%`, `50%`, `51%`, `52%`, `53%`, `54%`, `55%`, `56%`, `57%`, `5%`, `59%`, `60%`, `61%`, `62%`, `63%`, `64%`, `65%`, `66%`, `67%`, `6%`, `69%`, `70%`, `71%`, `72%`, `73%`, `74%`, `75%`, `76%`, `77%`, `7%`, `79%`, `0%`, `1%`, `2%`, `5%`, `4%`, `5%`, `6%`, `7%`, `%`, `9%`, `90%`, `91%`, `92%`, `93%`, `94%`, `95%`, `96%`, `97%`, `9%`, `99%`, `100%`]
+const shipted = shipted1[Math.floor(Math.random() * shipted1.length)]
+jet = `*Hmmm.... Eu Shipo eles 2💘💘*\n\n1= @${teupai11.id.split('@')[0]}\ne esse\n2= @${teupai21.id.split('@')[0]}\ncom uma porcentagem de: ${shipted}`
+membr.push(teupai11.id)
+membr.push(teupai21.id)
+mentions(jet, membr, true)
+break
+
+case 'nazista':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+rate = body.slice(9)
+conn.sendMessage(from, {text: ' ❰ Pesquisando a sua ficha de nazista : '+rate+' aguarde... ❱'})
+ setTimeout(async() => {
+random = `${Math.floor(Math.random() * 110)}`
+await conn.sendMessage(from, {image: {url: imgnazista}, caption: 'O quanto você é nazista? \n\n「 '+rate+' 」Você é: ❰ '+random+'% ❱  nazista 卐'}, {quoted: info})
+}, 7000)
+break 
 
 case 'inativos':  
 if (!isGroup) return reply(enviar.msg.grupo)
@@ -5129,6 +5906,435 @@ console.error(err)
 await reply(`Deve conter 10 pessoas com level, e o leveling deve está ativado para que aconteça a evolução de level dos membros, após as interações`)
 }
 break
+
+case 'rankgay':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+try{
+d = []
+ret = '🏳️‍🌈 Rank dos mais gays\n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+ret += `🏳️‍🌈❧ @${groupMembers[r].id.split('@')[0]}\n`
+d.push(groupMembers[r].id)
+}
+mentions(ret, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankgado':
+case 'rankgados':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+try{
+d = []
+ret = '🐂🐂 Rank dos mais gados do grupo \n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+ret += `🐂❧ @${groupMembers[r].id.split('@')[0]}\n`
+d.push(groupMembers[r].id)
+}
+mentions(ret, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankcorno':
+case 'rankcornos':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+membr = []
+const corno1 = groupMembers
+const corno2 = groupMembers
+const corno3 = groupMembers
+const corno4 = groupMembers
+const corno5 = groupMembers
+const cornos1 = corno1[Math.floor(Math.random() * corno1.length)]
+const cornos2 = corno2[Math.floor(Math.random() * corno2.length)]
+const cornos3 = corno3[Math.floor(Math.random() * corno3.length)]
+const cornos4 = corno4[Math.floor(Math.random() * corno4.length)]
+const cornos5 = corno5[Math.floor(Math.random() * corno5.length)]
+var porcentagemcorno = ["1%", `2%`, `3%`, `4%`, `5%`, `6%`, `7`, `%`, `9%`, `10`, `11%`, `12%`,`13%`, `14%`, `15%`, `16%`, `17%`, `1%`, `19%`, `20%`, `21%`, `22`, `23%`, `24%`, `25%`, `26%`, `27%`, `2%`, `27%`, `2%`, `29%`, `30%`, `31%`, `32%`, `33%`, `34%`, `35%`, `36%`, `37%`, `3%`, `39%`, `40%`, `41%`, `42%`, `43%`, `44%`, `45%`, `46%`, `47%`, `4%`, `49%`, `50%`, `51%`, `52%`, `53%`, `54%`, `55%`, `56%`, `57%`, `5%`, `59%`, `60%`, `61%`, `62%`, `63%`, `64%`, `65%`, `66%`, `67%`, `6%`, `69%`, `70%`, `71%`, `72%`, `73%`, `74%`, `75%`, `76%`, `77%`, `7%`, `79%`, `0%`, `1%`, `2%`, `5%`, `4%`, `5%`, `6%`, `7%`, `%`, `9%`, `90%`, `91%`, `92%`, `93%`, `94%`, `95%`, `96%`, `97%`, `9%`, `99%`, `O chifre desse ai bate na lua ksksksk`]
+const porcentagemc = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcentag = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcent = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcl = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porg = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const prg = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+ytb = `
+Esses são os cornos do grupo ${groupName}\n@${cornos1.id.split('@')[0]}\nCom uma porcentagem de ${porcent}\n@${cornos2.id.split('@')[0]}\nCom uma porcentagem de ${porcentag}\n@${cornos3.id.split('@')[0]}\nCom uma porcentagem de ${porcl}\n@${cornos4.id.split('@')[0]}\nCom uma porcentagem de ${porg}\n@${cornos5.id.split('@')[0]}\nCom uma porcentagem de ${prg}\n\n⚡ ${setting.NomeDoBot} ⚡`
+membr.push(cornos1.id)
+membr.push(cornos2.id)
+membr.push(cornos3.id)
+membr.push(cornos4.id)
+membr.push(cornos5.id)
+mentions(ytb, membr, true)
+break
+
+case 'rankgostosos':
+case 'rankgostoso':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+member = []
+const p01 = groupMembers
+const p02 = groupMembers
+const p03 = groupMembers
+const p04 = groupMembers
+const p05 = groupMembers
+const o01 = p01[Math.floor(Math.random() * p01.length)]
+const o02 = p02[Math.floor(Math.random() * p02.length)]
+const o03 = p03[Math.floor(Math.random() * p03.length)]
+const o04 = p04[Math.floor(Math.random() * p04.length)]
+const o05 = p05[Math.floor(Math.random() * p05.length)]
+luy = `
+Parados!🤚🤚\n\n1=🤚🤭@${o01.id.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o02.id.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o03.id.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o04.id.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o05.id.split('@')[0]}🤚🤭\n\n\nMulta por serem gostosos dms😳 pague pena trabalhando em nossa agência de modelos 😊 by: ${NomeDoBot}`
+member.push(o01.id)
+member.push(o02.id)
+member.push(o03.id)
+member.push(o04.id)
+member.push(o05.id)
+mentions(luy, member, true)
+break
+
+case 'rankgostosas':
+case 'rankgostosa':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+member = []
+const p1 = groupMembers
+const p2 = groupMembers
+const p3 = groupMembers
+const p4 = groupMembers
+const p5 = groupMembers
+const o1 = p1[Math.floor(Math.random() * p1.length)]
+const o2 = p2[Math.floor(Math.random() * p2.length)]
+const o3 = p3[Math.floor(Math.random() * p3.length)]
+const o4 = p4[Math.floor(Math.random() * p4.length)]
+const o5 = p5[Math.floor(Math.random() * p5.length)]
+luy = `
+Paradas!🤚🤚\n\n1=🤚🤭@${o1.id.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.id.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o3.id.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.id.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.id.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
+member.push(o1.id)
+member.push(o2.id)
+member.push(o3.id)
+member.push(o4.id)
+member.push(o5.id)
+mentions(luy, member, true)
+break
+
+case 'ranknazista':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+try{
+if(!isGroup) return reply(enviar.msg.grupo)
+d = []
+teks = '💂‍♂️Rank dos mais nazistas do gp\n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+teks += `💂‍♂️❧ @${groupMembers[r].id.split('@')[0]}\n`
+d.push(groupMembers[r].id)
+}
+mentions(teks, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankotakus':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+membr = []
+const otaku1 = groupMembers
+const otaku2 = groupMembers
+const otaku3 = groupMembers
+const otaku4 = groupMembers
+const otaku5 = groupMembers
+const otaku6 = groupMembers
+const otaku7 = groupMembers
+const otaku = groupMembers
+const otaku9 = groupMembers
+const otaku10 = groupMembers
+const otakus1 = otaku1[Math.floor(Math.random() * otaku1.length)]
+const otakus2 = otaku2[Math.floor(Math.random() * otaku2.length)]
+const otakus3 = otaku3[Math.floor(Math.random() * otaku3.length)]
+const otakus4 = otaku4[Math.floor(Math.random() * otaku4.length)]
+const otakus5 = otaku5[Math.floor(Math.random() * otaku5.length)]
+const otakus6 = otaku6[Math.floor(Math.random() * otaku6.length)]
+const otakus7 = otaku7[Math.floor(Math.random() * otaku7.length)]
+const otakus = otaku[Math.floor(Math.random() * otaku.length)]
+const otakus9 = otaku9[Math.floor(Math.random() * otaku9.length)]
+const otakus10 = otaku10[Math.floor(Math.random() * otaku10.length)]
+ytb = `esses são os otakus fedidos do grupo\n@${otakus1.id.split('@')[0]}\n@${otakus2.id.split('@')[0]}\n@${otakus3.id.split('@')[0]}\n@${otakus4.id.split('@')[0]}\n@${otakus5.id.split('@')[0]}\n@${otakus6.id.split('@')[0]}\n@${otakus7.id.split('@')[0]}\n@${otakus.id.split('@')[0]}\n@${otakus9.id.split('@')[0]}\n@${otakus10.id.split('@')[0]}\n\n⚡ ${setting.NomeDoBot} ⚡`
+membr.push(otakus1.id)
+membr.push(otakus2.id)
+membr.push(otakus3.id)
+membr.push(otakus4.id)
+membr.push(otakus5.id)
+membr.push(otakus6.id)
+membr.push(otakus7.id)
+membr.push(otakus.id)
+membr.push(otakus9.id)
+membr.push(otakus10.id)
+mentions(ytb, membr, true)
+break
+
+case 'rankpau':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for um, apenas digite ${prefix}modobrincadeira 1`)
+membr = []
+const pauz1 = groupMembers
+const pauz2 = groupMembers
+const pauz3 = groupMembers
+const pauz4 = groupMembers
+const pauz5 = groupMembers
+const paus1 = pauz1[Math.floor(Math.random() * pauz1.length)]
+const paus2 = pauz2[Math.floor(Math.random() * pauz2.length)]
+const paus3 = pauz3[Math.floor(Math.random() * pauz3.length)]
+const paus4 = pauz4[Math.floor(Math.random() * pauz4.length)]
+const paus5 = pauz5[Math.floor(Math.random() * pauz5.length)]
+var pcpau1 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau2 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau3 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau4 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau5 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+const pc1 = pcpau1[Math.floor(Math.random() * pcpau1.length)]
+const pc2 = pcpau2[Math.floor(Math.random() * pcpau2.length)]
+const pc3 = pcpau3[Math.floor(Math.random() * pcpau3.length)]
+const pc4 = pcpau4[Math.floor(Math.random() * pcpau4.length)]
+const pc5 = pcpau5[Math.floor(Math.random() * pcpau5.length)]
+pdr = `Esses são os caras com o menor e maior pau do Grupo\n${groupName}\n\n@${paus1.id.split('@')[0]}\n${pc1}\n@${paus2.id.split('@')[0]}\n${pc2}\n@${paus3.id.split('@')[0]}\n${pc3}\n@${paus4.id.split('@')[0]}\n${pc4}\n@${paus5.id.split('@')[0]}\n${pc5}\n\n ${setting.NomeDoBot}`
+membr.push(paus1.id)
+membr.push(paus2.id)
+membr.push(paus3.id)
+membr.push(paus4.id)
+membr.push(paus5.id)
+mentions(pdr, membr, true)
+break 
+
+case 'jogodavelha':
+if(!isGroup) return reply('comando apenas para grupos')
+joguinhodavelhajs.push(sender)
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs))
+joguinhodavelhajs2.push(from)
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+if (fs.existsSync(`./armor/tictactoe/db/${from}.json`)) {
+const boardnow = setGame(`${from}`);
+const matrix = boardnow._matrix;
+const chatMove = `*🎮Ꮐ̸Ꭺ̸Ꮇ̸Ꭼ̸ Ꭰ̸Ꭺ̸ Ꮩ̸Ꭼ̸Ꮮ̸Ꮋ̸Ꭺ̸🕹️*
+     
+[❗] Alguém está jogando no momento...\n\n@${boardnow.X} VS @${boardnow.O}
+     
+❌ : @${boardnow.X}
+⭕ : @${boardnow.O}
+     
+ Sua vez : @${boardnow.turn == "X" ? boardnow.X : boardnow.O}
+     
+${matrix[0][0]}  ${matrix[0][1]}  ${matrix[0][2]}
+${matrix[1][0]}  ${matrix[1][1]}  ${matrix[1][2]}
+${matrix[2][0]}  ${matrix[2][1]}  ${matrix[2][2]}
+`;
+conn.sendMessage(from, {text: chatMove}, {quoted: info,
+contextInfo: {
+mentionedJid: [
+boardnow.X + "@s.whatsapp.net",
+boardnow.O + "@s.whatsapp.net",
+],
+},
+});
+return;
+}
+if (argss.length === 1)
+return reply(`*⟅❗⟆ Jogue com Alguem!!!!*
+*para inicar a partida : ${prefix + command} @membro do gp*`);
+const boardnow = setGame(`${from}`);
+console.log(`Start No jogodavelha ${boardnow.session}`);
+boardnow.status = false;
+boardnow.X = sender.replace("@s.whatsapp.net", "");
+boardnow.O = argss[1].replace("@", "");
+var blabord = [`${boardnow.X}`, `${boardnow.O}`]
+fs.writeFileSync(`./armor/tictactoe/db/${from}.json`,
+JSON.stringify(boardnow, null, 2)
+);
+const strChat = `*『📌ᎬՏᏢᎬᎡᎪΝᎠϴ ϴ ϴᏢϴΝᎬΝͲᎬ⚔️』*
+     
+@${sender.replace("@s.whatsapp.net",
+"")} _está te desafiando para uma partida de jogo da velha..._
+_[ ${argss[1]} ] Use *『S』* para aceitar ou *『N』* para não aceitar..._
+     `;
+conn.sendMessage(from, {text: strChat, mentions: [blabord]}, {quoted: info});
+break
+
+case 'resetarvelha':
+case 'resetavelha':  
+case 'resetarv':
+case 'resetav': 
+case 'resetvelha':
+case 'rv': 
+if (!isJoguin && !isGroupAdmins) return reply(`Fale com quem iniciou o jogo, só ele pode resetar, ou então algum ADM`)
+if (fs.existsSync("./armor/tictactoe/db/" + from + ".json")) {
+fs.unlinkSync("./armor/tictactoe/db/" + from + ".json");
+reply(`Jogo da velha resetado com sucesso nesse grupo!`);
+joguinhodavelhajs.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha.json', JSON.stringify(joguinhodavelhajs))
+joguinhodavelhajs2.splice([])
+fs.writeFileSync('./datab/usuarios/joguinhodavelha2.json', JSON.stringify(joguinhodavelhajs2))
+} else {
+reply(`Não a nenhuma sessão em andamento...`);
+}
+break
+
+case "ppt":
+if (args.length < 1) return reply(`Você deve digitar ${prefix}ppt pedra, ${prefix}ppt papel ou ${prefix}ppt tesoura`)
+ppt = ["pedra", "papel", "tesoura"]
+ppy = ppt[Math.floor(Math.random() * ppt.length)]
+ppg = Math.floor(Math.random() * 1) + 10
+pptb = ppy
+if ((pptb == "pedra" && args == "papel") ||
+(pptb == "papel" && args == "tesoura") ||
+(pptb == "tesoura" && args == "pedra")) {
+var vit = "vitoria"
+} else if ((pptb == "pedra" && args == "tesoura") ||
+(pptb == "papel" && args == "pedra") ||
+(pptb == "tesoura" && args == "papel")) {
+var vit = "derrota"
+} else if ((pptb == "pedra" && args == "pedra") ||
+(pptb == "papel" && args == "papel") ||
+(pptb == "tesoura" && args == "tesoura")) {
+var vit = "empate"
+} else if (vit = "undefined") {
+return reply(`Você deve digitar ${prefix}ppt pedra, ${prefix}ppt papel ou ${prefix}ppt tesoura`)
+}
+if (vit == "vitoria") {
+var tes = "Vitória do jogador"
+}
+if (vit == "derrota") {
+var tes = "A vitória é do BOT"
+}
+if (vit == "empate") {
+var tes = "O jogo terminou em empate"
+}
+reply(`${NomeDoBot} jogou: ${pptb}\nO jogador jogou: ${args}\n\n${tes}`)
+if (tes == "Vitória do jogador") {
+reply(pph)
+}
+break
+
+case 'cassino':
+addFilter(from)  
+const soto = [
+'🍊 : 🍒 : 🍐',
+'🍒 : 🔔 : 🍊',
+'🍇 : 🍇 : 🍇',
+'🍊 : 🍋 : 🔔',
+'🔔 : 🍒 : 🍐',
+'🔔 : 🍒 : 🍊',
+'🍊 : 🍋 : ??',		
+'🍐 : 🍒 : 🍋',
+'🍐 : 🍐 : 🍐',
+'🍊 : 🍒 : 🍒',
+'🔔 : 🔔 : 🍇',
+'🍌 : 🍒 : 🔔',
+'🍐 : 🔔 : 🔔',
+'🍊 : 🍋 : 🍒',
+'🍋 : 🍋 : 🍌',
+'🔔 : 🔔 : 🍇',
+'🔔 : 🍐 : 🍇',
+'🔔 : 🔔 : 🔔',
+'🍒 : 🍒 : 🍒',
+'🍌 : 🍌 : 🍌'
+]		  
+
+const somtoy2 = sotoy[Math.floor(Math.random() * sotoy.length)]
+if ((somtoy2 == '🥑 : 🥑 : 🥑') ||(somtoy2 == '🍉 : 🍉 : 🍉') ||(somtoy2 == '🍓 : 🍓 : 🍓') ||(somtoy2 == '🍎 : 🍎 : 🍎') ||(somtoy2 == '🍍 : 🍍 : 🍍') ||(somtoy2 == '🥝 : 🥝 : 🥝') ||(somtoy2 == '🍑 : 🍑 : 🍑') ||(somtoy2 == '🥥 : 🥥 : 🥥') ||(somtoy2 == '🍋 : 🍋 : 🍋') ||(somtoy2 == '🍐 : 🍐 : 🍐') ||(somtoy2 == '🍌 : 🍌 : 🍌') ||(somtoy2 == '🍒 : 🍒 : 🍒') ||(somtoy2 == '🔔 : 🔔 : 🔔') ||(somtoy2 == '🍊 : 🍊 : 🍊') ||(somtoy2 == '🍇 : 🍇 : 🍇')) {
+var Vitória = "Você ganhou!!!"
+} else {
+var Vitória = "Você perdeu..."
+}
+
+const cassino = `
+┏━━━━❪🎰❫━━━━
+┣► ${somtoy2}◄┛
+┗━━━━❪💰❫━━━━
+
+*${Vitória}*`
+  
+sendBtext(from, `${cassino}`, `${Vitória}`, [
+{buttonId: `${prefix}cassino`, buttonText: {displayText: `Proximo`}, type: 1}], selo)
+break
+
+case 'quizanimais':
+if(!isGroup) return reply('Comando apenas para grupos')
+const animaisquiz = Math.floor(Math.random() * quizanimais.length)
+if(!isGroupAdmins) return reply('Comando apenas para admins')
+if(args.length == 0) return reply('use 1 para ativar o jogo \npara desativar use quizanimais 0')
+if (args.join(' ') === '1') {
+if(fs.existsSync(`./armor/quizanim-${from}.json`)) {
+let dataAnagrama2 = JSON.parse(fs.readFileSync(`./armor/quizanim-${from}.json`))
+imagemtexto =`                             「❓Quiz❓」`
+await conn.sendMessage(from, {image: {url: dataAnagrama2.foto}, caption: imagemtexto, thumbnail: wew}, {quoted: selo})
+} else {
+fs.writeFileSync(`./armor/quizanim-${from}.json`, `${JSON.stringify(quizanimais[animaisquiz])}`)
+imagemtexto =`                             「❓Quiz❓」`
+await conn.sendMessage(from, {image: {url: dataAnagrama2.foto}, caption: imagemtexto, thumbnail: wew}, {quoted: selo})
+}
+} else if (args.join(' ') ==='0') {
+if(!fs.existsSync(`./armor/quizanim-${from}.json`)) return reply('Não tem como desativar o jogo pôs ele não foi ativado')
+fs.unlinkSync(`./armor/quizanim-${from}.json`)
+reply("Desativado com sucesso")
+}
+await limitAdd(sender)
+break
+
+case 'anagrama':
+if(!isGroup) return reply('comando apenas para grupos')
+const anaaleatorio = Math.floor(Math.random() * palavrasANA.length)
+if(!isGroupAdmins) return reply('comando apenas para admins')
+if(args.length == 0) return reply('use 1 para ativar o jogo do anagrama\npara desativar use anagrama 0')
+if (args.join(' ') === '1') {
+if(fs.existsSync(`./armor/anagrama-${from}.json`)) {
+let dataAnagrama2 = JSON.parse(fs.readFileSync(`./armor/anagrama-${from}.json`))
+reply(`o jogo já foi iniciado neste grupo:
+palavra: ${dataAnagrama2.embaralhada}
+dica: ${dataAnagrama2.dica}
+`)} else {
+fs.writeFileSync(`./armor/anagrama-${from}.json`, `${JSON.stringify(palavrasANA[anaaleatorio])}`)
+conn.sendMessage(from, {text: `
+╭─────≽「 👾 ANAGRAMA 👾 」
+│➽ DESCUBRA A PALAVRA
+│➽ ANAGRAMA: ${palavrasANA[anaaleatorio].embaralhada}
+│➽ DICA: ${palavrasANA[anaaleatorio].dica}
+╰────────────────────────
+`})
+}
+} else if (args.join(' ') ==='0') {
+if(!fs.existsSync(`./armor/anagrama-${from}.json`)) return reply('não tem como desativar o jogo do anagrama pôs ele não foi ativado')
+fs.unlinkSync(`./armor/anagrama-${from}.json`)
+reply("desativado com sucesso")
+}
+await limitAdd(sender)
+break
+
+case 'revelaranime':
+case 'revelaanime':  
+if (!isGroupAdmins) return reply('somente adms')
+let dataAnagrama = JSON.parse(fs.readFileSync(`./armor/quizanime-${from}.json`))
+reply (`${dataAnagrama.original}`)
+break
+
+case 'revelaranimal':
+case 'revelaanimal':  
+if (!isGroupAdmins) return reply('somente adms')
+let dataAnagramaa = JSON.parse(fs.readFileSync(`./armor/quizanim-${from}.json`))
+reply (`${dataAnagramaa.original}`)
+break
+
+//=======(FIM-BRINCADEIRAS-JOGOS)========\\
+
 
 
 //=(CASE-SIMIH-INTELIGÊNCIA-ARTIFICIAL)=\\
@@ -5485,18 +6691,310 @@ break
 
 //=======(JOGO-DA-VELHA-COM-MAQUINA)=======\\
 
-//==========(EFEITOS-MARCAR)==========\\
+case 'tttme':
+if (!isGroup) return reply('SÓ EM GRUPO')
+const checkTTTIdMe = getTTTId(sender)
+if (checkTTTIdMe === undefined) addTTTId(sender)
+conn.sendMessage(from, {text: tttme(pushname, getTTTwins(sender), getTTTdefeats(sender), getTTTties(sender), getTTTpoints(sender))}, {quoted: info})
+break
 
-case 'togif':
-if (!isQuotedSticker) return reply('*[ ❗ ] Marque a figurinha animada!*')
-if ((isMedia && !info.message.videoMessage || isQuotedSticker) && args.length == 0) {
-buff = await getFileBuffer(info.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage, 'sticker')
-reply('*「 ❗ 」 Aguarde, convertendo a figu em gif...*')
-a = await webp_mp4(buff)
-conn.sendMessage(from, {video: {url: a}, gifPlayback: true, filename: `stick.gif`}, {quoted: info})
-fs.unlinkSync(buff)
+case 'tttrank':
+if (!isGroup) return reply(enviar.msg.grupo)
+tictactoe.sort((a, b) => (a.points < b.points) ? 1 : -1)
+mentioned_jid = []
+let board = '*🔥Ranking dos melhores players🔥*\n\n'
+try {
+for (let i = 0; i < 3; i++) {
+if (i == 0) {board += `${i + 1}º 🥇 : @${tictactoe[i].id.split('@')[0]}\n➻❥ *Ganhou: ${tictactoe[i].wins}*\n➻❥ *Perdeu: ${tictactoe[i].defeats}*\n➻❥ *Empates: ${tictactoe[i].ties}*\n*➻❥ Pontuação: ${tictactoe[i].points}*\n\n`
+
+} else if (i == 1) {board += `${i + 1}º 🥈 : @${tictactoe[i].id.split('@')[0]}\n➻❥ *Ganhou: ${tictactoe[i].wins}*\n➻❥ *Perdeu: ${tictactoe[i].defeats}*\n➻❥ *Empates: ${tictactoe[i].ties}*\n*➻❥ Pontuação: ${tictactoe[i].points}*\n\n`
+  
+} else if (i == 2) {board += `${i + 1}º 🥉 : @${tictactoe[i].id.split('@')[0]}\n➻❥ *Ganhou: ${tictactoe[i].wins}*\n➻❥ *Perdeu: ${tictactoe[i].defeats}*\n➻❥ *Empates: ${tictactoe[i].ties}*\n*➻❥ Pontuação: ${tictactoe[i].points}*\n\n`
+  
+}
+mentioned_jid.push(tictactoe[i].id)
+} 
+mentions(board, mentioned_jid, true)
+} catch (err) {
+console.log(err)
+await conn.sendMessage(from, {text: `*É necessário 3 jogadores para se construir um ranking*`}, {quoted: info})
 }
 break
+
+case 'jogar':
+tttset.playertest = sender
+if (!isGroup) {
+reply(ptbr.group())
+} else if (tttset.tttstatus == "off") {
+reply(`*O jogo não foi iniciado*\n*Digite ${prefix}ttt <dificukdade> para iniciar*`)
+} else if (tttset.player != tttset.playertest) {
+reply(`*O jogo já foi iniciado por outro player, aguarde ele terminar...*`)
+  
+} else if (tttset.tttantibug == "on") {
+reply(`Aguarde a ação anterior ser concluída...`)
+
+} else {
+tttset.tttantibug = "on"
+const coordX = args
+if (coordX != 'a1' && coordX != 'a2' && coordX != 'a3' &&
+coordX != 'b1' && coordX != 'b2' && coordX != 'b3' && coordX != 'c1' && coordX != 'c2' && coordX != 'c3') {
+reply(`*Diga a cordenada*\nExemplo: ${prefix}coord a1`)
+tttset.tttantibug = "off"
+} else {
+  
+switch (args[0]) {
+  
+case 'a1':
+if (esp.a1 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.a1 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+
+case 'a2':
+if (esp.a2 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.a2 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+
+case 'a3':
+if (esp.a3 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.a3 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+
+case 'b1':
+if (esp.b1 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.b1 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+                
+case 'b2':
+if (esp.b2 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.b2 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+                
+case 'b3':
+if (esp.b3 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.b3 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+                
+case 'c1':
+if (esp.c1 != "🔲") {
+ reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.c1 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+                
+case 'c2':
+if (esp.c2 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.c2 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+                
+case 'c3':
+if (esp.c3 != "🔲") {
+reply('*Esse espaço ja foi marcado, tente outro')
+} else {
+esp.c3 = "❌"
+while (tttset.reActivate1 == "on") {
+IA()
+}
+}
+break
+
+}
+tttset.reActivate1 = "on"
+reply(`🌀1️⃣2️⃣3️⃣\n🅰️${esp.a1}${esp.a2}${esp.a3}\n🅱️${esp.b1}${esp.b2}${esp.b3}\n©️${esp.c1}${esp.c2}${esp.c3}`)
+var randomTTTXP = 0
+            
+if (WinnerX()) {
+if (isCmd) {
+switch (tttset.tttdifficulty) {
+              
+case "EASY":
+randomTTTXP = Math.floor(Math.random() * 25) + 25
+addLevelingXp(tttset.player, randomTTTXP)
+break
+
+case "NORMAL":
+randomTTTXP = Math.floor(Math.random() * 75) + 75
+addLevelingXp(tttset.player, randomTTTXP)
+break
+
+case "HARD":
+randomTTTXP = Math.floor(Math.random() * 200) + 200
+addLevelingXp(tttset.player, randomTTTXP)
+break
+                
+case "IMPOSSIBLE":
+randomTTTXP = Math.floor(Math.random() * 1000) + 1000
+addLevelingXp(tttset.player, randomTTTXP)
+break
+}
+conn.sendMessage(from, {text: `*VOCÊ VENCEU, PARABENS*\n\n *VOCÊ GANHOU ${randomTTTXP}XP*`})
+} else {
+conn.sendMessage(from,{text: `*VOCÊ VENCEU, PARABENS*`},)
+}
+
+const currentTTTwins = getTTTwins(tttset.player)
+const checkTTTIdWin = getTTTId(tttset.player)
+if (currentTTTwins === undefined && checkTTTIdWin === undefined) addTTTId(tttset.player)
+addTTTwin(tttset.player, 1)
+addTTTpoints(tttset.player, randomTTTXP)
+esp.a1 = "🔲"; esp.a2 = "🔲"; esp.a3 = "🔲"
+esp.b1 = "🔲"; esp.b2 = "🔲"; esp.b3 = "🔲"
+esp.c1 = "🔲"; esp.c2 = "🔲"; esp.c3 = "🔲"
+tttset.tttstatus = "off"
+tttset.waitingTime = "on"
+} else if (WinnerO()) {
+				  
+if (isCmd) {
+switch (tttset.tttdifficulty) {
+case "EASY":
+randomTTTXP = 0 - (Math.floor(Math.random() * 200) + 200)
+addLevelingXp(tttset.player, randomTTTXP)
+break
+					
+case "NORMAL":
+randomTTTXP = 0 - (Math.floor(Math.random() * 75) + 75)
+addLevelingXp(tttset.player, randomTTTXP)
+break
+					
+case "HARD":
+randomTTTXP = 0 - (Math.floor(Math.random() * 25) + 25)
+addLevelingXp(tttset.player, randomTTTXP)
+break
+					
+case "IMPOSSIBLE":
+randomTTTXP = 0
+addLevelingXp(tttset.player, randomTTTXP)
+break
+
+}	
+conn.sendMessage(from, {text: `*Você perdeu*\n\n AGORA VC PAGARÁ: ${randomTTTXP}XP`})
+	
+} else {
+conn.sendMessage(from, {text: `*Você perdeu*`})
+}
+const currentTTTdefeats = getTTTdefeats(tttset.player)
+const checkTTTIdDefeat = getTTTId(tttset.player)
+if (currentTTTdefeats === undefined && checkTTTIdDefeat === undefined) addTTTId(tttset.player)
+addTTTdefeat(tttset.player, 1)
+addTTTpoints(tttset.player, randomTTTXP)
+esp.a1 = "🔲"; esp.a2 = "🔲"; esp.a3 = "🔲"
+esp.b1 = "🔲"; esp.b2 = "🔲"; esp.b3 = "🔲"
+esp.c1 = "🔲"; esp.c2 = "🔲"; esp.c3 = "🔲"
+tttset.tttstatus = "off"
+tttset.waitingTime = "on"
+				
+} else if (Tie()) {
+if (isCmd) {
+conn.sendMessage(from, {text: `*JOGO EMPATADO, NÃO HOUVE PERDAR*`})
+} else {
+conn.sendMessage(from, {text: `*JOGO, EMPATADO, TENHA UM BOM DIA*`})
+}
+
+const currentTTTties = getTTTties(tttset.player)
+const checkTTTIdTie = getTTTId(tttset.player)
+if (currentTTTties === undefined && checkTTTIdTie === undefined) addTTTId(tttset.player)
+addTTTtie(tttset.player, 1)
+esp.a1 = "🔲"; esp.a2 = "🔲"; esp.a3 = "🔲"
+esp.b1 = "🔲"; esp.b2 = "🔲"; esp.b3 = "🔲"
+esp.c1 = "🔲"; esp.c2 = "🔲"; esp.c3 = "🔲"
+tttset.tttstatus = "off"
+tttset.waitingTime = "on"
+}
+tttset.tttantibug = "off"
+}
+}
+break
+				
+case 'ttt':
+const limitrl = getLimit(sender, daily)
+if (!isGroup) {
+reply(enviar.espere)
+} else if (tttset.tttstatus == "on") {
+reply(`Alguém já está jogando no momento\nPor favor aguarde um instante...`)
+} else if (tttset.waitingTime == "on") {
+reply(`Alguém jogou recentemente\nPor favor aguarde o tempo de espera...`)
+} else if (args == 0 || (args != 'easy' && args != 'Easy' && args != 'EASY' && args != 'normal' && args != 'Normal' && args != 'NORMAL' && args != 'hard' && args != 'Hard' && args != 'HARD'&& args != 'impossible'&& args != 'Impossible' && args != 'IMPOSSIBLE')) {
+reply(`Defina a dificuldade\nEx.: ${prefix}ttt easy\n\nDificuldades: easy, normal, hard e impossible`)
+
+} else {
+tttset.tttstatus = "on"
+tttset.player = sender
+tttset.playerName = pushname
+tttset.mentionPlayer = info
+tttset.local = from
+if (args == 'easy' || args == 'Easy' || args == 'EASY') {
+tttset.tttdifficulty = "EASY"
+} else if (args == 'normal' || args == 'Normal' || args == 'NORMAL') {
+tttset.tttdifficulty = "NORMAL"
+} else if (args == 'hard' || args == 'Hard' || args == 'HARD') {
+tttset.tttdifficulty = "HARD"
+} else if (args == 'impossible' || args == 'Impossible' || args == 'IMPOSSIBLE') {
+tttset.tttdifficulty = "IMPOSSIBLE"
+}
+const randomStartIA = Math.floor(Math.random() * 3)
+if (randomStartIA == 0) {
+IA()
+tttset.reActivate1 = "on"	
+}
+blat =  `🌀1️⃣2️⃣3️⃣\n🅰️${esp.a1}${esp.a2}${esp.a3}\n🅱️${esp.b1}${esp.b2}${esp.b3}\n©️${esp.c1}${esp.c2}${esp.c3}`
+conn.sendMessage(from, {text: `${blat}\n\nCaso não saiba como jogar digite: ${prefix}ttthelp`})
+setTimeout( () => {
+tttset.waitingTime = "off"
+tttset.autoEndTime = "on"
+}, 12000) //2 minutos
+addLimit(sender, daily)
+}
+break
+
+case 'ttthelp':
+conn.sendMessage(from, {text: ttthelp(prefix)})
+break
+//==========(EFEITOS-MARCAR)==========\\
 
 case 'triggered':
 try {
@@ -5517,6 +7015,17 @@ console.log("A api caiu ou não foi possivel executar esta ação., espere retor
 } else {
 reply('ERROR!!')
 }
+}
+break
+
+case 'togif':
+if (!isQuotedSticker) return reply('*[ ❗ ] Marque a figurinha animada!*')
+if ((isMedia && !info.message.videoMessage || isQuotedSticker) && args.length == 0) {
+buff = await getFileBuffer(info.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage, 'sticker')
+reply('*「 ❗ 」 Aguarde, convertendo a figu em gif...*')
+a = await webp_mp4(buff)
+conn.sendMessage(from, {video: {url: a}, gifPlayback: true, filename: `stick.gif`}, {quoted: info})
+fs.unlinkSync(buff)
 }
 break
 
@@ -5588,6 +7097,23 @@ reply('ERROR!!')
 }
 break
 
+case 'comporn':
+try {
+txt = body.slice(9)
+jrr = txt.split("/")[0];
+jrr1 = txt.split("/")[1];
+if(!txt.includes("/")) return reply(`Cade a /\nExemplo: ${prefix + command} Sad/demais`)
+reply(enviar.espere)
+await conn.sendMessage(from, {image: {url:`https://aleatoryapi.herokuapp.com/canvas/phub?nome=${jrr}&msg=${jrr1}&foto=https://telegra.ph/file/954832554bf2b2e40f932.jpg&apikey=${keyale}`}}, {quoted: info})
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break 
+
 case 'preso':
 try {
 if ((isMedia && !info.message.videoMessage || isQuotedImage)) {
@@ -5598,6 +7124,28 @@ base64 = Buffer.from([])
 for await(const send of imagem) { base64 = Buffer.concat( [ base64, send ] ) }
 link = await upload(base64)
 conn.sendMessage(from, {image: {url:`https://aleatoryapi.herokuapp.com/canvas/jail?url=${link}&apikey=${keyale}`}}, {quoted: info})
+} else {
+reply('Selecione uma imagem...!')
+}
+} catch (e) {
+if(String(e).includes("invalid json response body at")) {
+console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
+} else {
+reply('ERROR!!')
+}
+}
+break
+
+case 'legenda':
+try {
+gh = args.join(" ")        
+txt1 = gh.split('/')[0] || ''
+txt2 = gh.split('/')[1] || ''
+if(!gh.includes("/")) return reply(`Cade a / mano?\nExemplo: ${prefix + command} Sad/Demais`)  
+if ((isMedia && !info.message.videoMessage || isQuotedImage || isQuotedSticker)) {
+base64 = await getFileBuffer(info.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage, 'image')
+link = await upload(base64)
+conn.sendMessage(from, {image: {url:`https://aleatoryapi.herokuapp.com/api/legenda?url=${link}&texto1=${encodeUrl(txt1)}&texto2=${encodeUrl(txt2)}&apikey=${keyale}`}}, {quoted: info})
 } else {
 reply('Selecione uma imagem...!')
 }
@@ -5701,47 +7249,6 @@ reply('ERROR!!')
 }
 }
 break
-
-
-case 'comporn':
-try {
-txt = body.slice(9)
-jrr = txt.split("/")[0];
-jrr1 = txt.split("/")[1];
-if(!txt.includes("/")) return reply(`Cade a /\nExemplo: ${prefix + command} Sad/demais`)
-reply(enviar.espere)
-await conn.sendMessage(from, {image: {url:`https://aleatoryapi.herokuapp.com/canvas/phub?nome=${jrr}&msg=${jrr1}&foto=https://telegra.ph/file/954832554bf2b2e40f932.jpg&apikey=${keyale}`}}, {quoted: info})
-} catch (e) {
-if(String(e).includes("invalid json response body at")) {
-console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
-} else {
-reply('ERROR!!')
-}
-}
-break 
-
-case 'legenda':
-try {
-gh = args.join(" ")        
-txt1 = gh.split('/')[0] || ''
-txt2 = gh.split('/')[1] || ''
-if(!gh.includes("/")) return reply(`Cade a / mano?\nExemplo: ${prefix + command} Sad/Demais`)  
-if ((isMedia && !info.message.videoMessage || isQuotedImage || isQuotedSticker)) {
-base64 = await getFileBuffer(info.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage, 'image')
-link = await upload(base64)
-conn.sendMessage(from, {image: {url:`https://aleatoryapi.herokuapp.com/api/legenda?url=${link}&texto1=${encodeUrl(txt1)}&texto2=${encodeUrl(txt2)}&apikey=${keyale}`}}, {quoted: info})
-} else {
-reply('Selecione uma imagem...!')
-}
-} catch (e) {
-if(String(e).includes("invalid json response body at")) {
-console.log("A api caiu ou não foi possivel executar esta ação., espere retornar")   
-} else {
-reply('ERROR!!')
-}
-}
-break
-
 
 case 'convite':
 if(!budy.includes("chat.whatsapp.com")) return reply("Cadê o link do grupo que você deseja que eu entre?")  
@@ -5989,14 +7496,15 @@ hora2 = moment.tz('America/Sao_Paulo').format('HH:mm:ss');
 if (isCmd) {
 uptime = process.uptime() 
 conn.sendMessage(from, {text: `
-┏━━━┅━━━━━━ ━ ━━
-┗━ ━━ SKYNERD
+┏━━━┅━━━━━━ ━ ━━ ❁ • °
 ┃
-┃• _Comando Inesistente ✧࿐
+┗━ ━━ 阿利托里
 ┃
-┃• _Digite_ : ${prefix}menu
+┃• 𝙲𝚘𝚖𝚊𝚗𝚍𝚘 𝚒𝚗𝚎𝚡𝚒𝚜𝚝𝚎𝚗𝚝𝚎 ✧˖*°࿐
 ┃
-┃• _Hora_ : ${hora2}
+┃• 𝙳𝚒𝚐𝚒𝚝𝚎: ${prefix}menu
+┃
+┃• 𝙷𝚘𝚛𝚊: ${hora2} 𖤐⁩᭄ꦿ
 ┃
 ┗────────────────╯`}, {quoted: selo}) 
 }

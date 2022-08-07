@@ -236,9 +236,6 @@ const palavra = JSON.parse(fs.readFileSync('./datab/grupos/palavras.json'))
 
 const palavrao = JSON.parse(fs.readFileSync('./datab/grupos/palavrao.json'))
 
-const validadekey = JSON.parse(fs.readFileSync('./armor/validadekey.json'));
-
-const geradorkey = JSON.parse(fs.readFileSync('./armor/geradorkey.json'));
 
 //\\
 
@@ -450,8 +447,6 @@ simih,
 
 voting, 
 sotoy, 
-validadekey,
-geradorkey,
 addVote, 
 delVote, 
 countMessage, 
