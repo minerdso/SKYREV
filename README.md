@@ -1,9 +1,11 @@
 BOT SKYNERD - SSH TESTE POR WHATSAPP
 MINERDAugust 03, 2022
 
-logo marca
-video demo
+logo marca](https://telegra.ph/file/03d953c5a0ecde74634c4.jpg)
 
+https://telegra.ph/file/dc7f258c69955b220eaa9.mp4
+
+https://telegra.ph/file/93d8925d291850f0771a8.jpg
 
 
 ALGUNS COMANDOS GERENCIAR SEUS GRUPOS
