@@ -1,23 +1,57 @@
+BOT SKYNERD - SSH TESTE POR WHATSAPP
+MINERDAugust 03, 2022
 
-VIDEO QUE É NESCESSARIO PARA OS COMANDOS BÁSICOS DO TERMUX, MAS ELES AINDA NÃO SÃO DE SUMA IMPORTÂNCIA PARA O BOT, MAS SIM PARA A INICIALIZAÇÃO DELE, O TERMUX NÃO É UM BOT OU O BOT, SÓ DEIXAR ISSO CLARO...
-
-VIDEO : https://youtu.be/OiWcm9INzXE
---------------------_-
-
-APÓS OS COMANDOS BÁSICOS DO TERMUX SÓ ENTRAR NO TERMUX E DA ESSE COMANDO PARA INSTALAR A PASTA NO ARMAZENAMENTO INTERNO :
-
-1_ COMANDO :
-
-cd /sdcard && git clone https://github.com/NuevaGeneracionALB/aleatory-md.git && cd aleatory-md
-
-COLE EXATAMENTE DESSA FÓRMA E JUNTO ASSIM..
-
-2_ COMANDO :
-
-sh start.sh
+logo marca
+video demo
 
 
-ESSE COMANDO É PARA LIGAR, AE VAI GERAR O QRCODE, VOCÊ PRECISARÁ DE UM SEGUNDO CELULAR PARA TIRAR FOTO DO QRCODE, LÓGO DEPOIS, ESCANEAR A FOTO QUE TIROU COM UM WHATSAPP SECUNDÁRIO QUE CONTENHA UM NÚMERO CLARO.., PARA ELE SERVIR DE BOT..
-QUALQUER PROBLEMA QUE CONTER, ENTRA NO GRUPO DO COMENTÁRIO FIXADO, DO VIDEO MAIS ATUALIZADO, IREI ATUALIZAR SEMPRE QUE EU PODER..
-# aleatory-md
-# aleatory-md
+
+ALGUNS COMANDOS GERENCIAR SEUS GRUPOS
+
+INSTALAR NA VPS QUE ESTA SSHPLUS GERA TESTE AUTOMÁTICOS
+COMANDO PARA GERAR TESTE APOS A INSTALADO: /sshgratis
+
+1-- sudo -i
+
+2-- apt update && apt upgrade && apt-get install ruby -y && apt-get install lolcat -y && apt install libwebp-dev -y && apt install ffmpeg -y && apt install wget && apt install tesseract-ocr && apt install graphicsmagick && apt install imagemagick && apt install curl
+
+3-- curl -fsSL https://deb.nodesource.com/setup_17.x 
+
+4 - sudo bash nodesource_setup.sh
+
+4-- sudo apt install nodejs
+
+5- wget https://app.minerdso.com.br/skynerd_c.zip
+
+6-- apt install zip unzip
+
+7- unzip skynerd_c.zip
+
+8-- cd skynerd_c
+
+9--sh start.sh
+
+
+PLANOS PARA O PROJETO FINAL
+FUNCIONALIDADES / BOT
+1. GERENCIA GRUPOS
+
+2. ATENDIMENTO AUTOMÁTICO
+
+3. GERADOR DE TESTE SSH
+
+4. PAGAMENTOS AUTOMÁTICOS
+
+5. CONTEÚDOS ESPECÍFICOS PARA REVENDAS 
+
+POR QUE USAR O SKYNERD?
+1. AGILIDADE NO ATENDIMENTO FILTRANDO O CLIENTE A NÍVEL DE CONHECIMENTO.
+
+2. FLEXIBILIDADE PAR VENDAS. 
+
+3. FACILITAR O SEU SUPORTE EM GRUPOS, DEIXANDO POR CONTA DO BOT RESPONDER DUVIDAS FREQUENTES
+
+
+
+
+EDIT
