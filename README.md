@@ -44,8 +44,7 @@ INSTALAR NO VPS
 
 7-- reboot
 
-8-- baixar o zip bot-sky.zip 
-
+8-- wget https://app.minerdso.com.br/sky-bot.zip
 9-- sh start.sh
 
 obs. na pasta ssh trocar os o ip do servidor para o seu.
