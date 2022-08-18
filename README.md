@@ -1,6 +1,34 @@
+![photo1659552039](https://user-images.githubusercontent.com/20786530/185298451-014b3287-e972-49bc-8807-0493d8fed263.jpeg)
 
-INSTALAR NA VPS QUE ESTA SSHPLUS
+BOT SKYNERD - ATENDIMENTO - ADM GRUPO - MANANGER SSH
 
+FUNCIONALIDADES / BOT
+
+1. GERENCIA GRUPOS
+
+2. ATENDIMENTO AUTOMÁTICO
+
+3. MANANGER SSH
+
+4. PAGAMENTOS AUTOMÁTICOS
+
+5. CONTEÚDOS ESPECÍFICOS PARA REVENDAS 
+
+POR QUE USAR O SKYNERD?
+
+1. AGILIDADE NO ATENDIMENTO FILTRANDO O CLIENTE A NÍVEL DE CONHECIMENTO.
+
+2. FLEXIBILIDADE PAR VENDAS. 
+
+3. FACILITAR O SEU SUPORTE EM GRUPOS, DEIXANDO POR CONTA DO BOT RESPONDER DUVIDAS FREQUENTES
+
+DEMOS VIDEO.
+
+MODULO - 1 E 2 = https://www.youtube.com/watch?v=6HTPb7nNvss
+MODULO - 3 = https://youtu.be/nPp_A0hEbWE
+
+
+INSTALAR NO VPS 
 
 1-- sudo su
 
@@ -23,4 +51,10 @@ INSTALAR NA VPS QUE ESTA SSHPLUS
 obs. na pasta ssh trocar os o ip do servidor para o seu.
 
 
-seja feliz
+AGRADECIMENTOS E BASE PARA CRIAÇÃO DO SKYNERD
+
+https://github.com/kauanjardini
+https://github.com/adiwajshing/WhatsAppInfoBot
+https://github.com/KillovSky/iris
+https://github.com/NuevaGeneracionALB/aleatory-md
+
