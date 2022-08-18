@@ -40,7 +40,7 @@ INSTALAR NO VPS
 
 5-- sudo apt install nodejs
 
-6-- apt install zip unzip
+6-- apt install unzip
 
 7-- reboot
 
