@@ -27,6 +27,8 @@ const yts= require('yt-search')
 const mimetype = require('mime-types')
 const linkfy = require('linkifyjs');
 const encodeUrl = require('encodeurl');
+const toMs = require('ms');
+
 
 
 const { youtube, facebook, quotes, igdl, igdl2, igstalk, igstory, tiktok, twitter, joox, covid, pin, pinterest, wallpaper, wikimedia, porno, hentai, quotesAnime, listsurah, surah, tafsirsurah, film, manga, anime, character, drakor, otakudesu, ongoing, komiku, tebakgambar, sholat, lirik, chara, wattpad, playstore, linkwa, telesticker, stickersearch, webtoon, surah2, fbdown, twitter2 } = require("./lib/scrape")
@@ -36,9 +38,9 @@ const { isFiltered, addFilter } = require('./func/js/antispam.js');
 const { addComandosId, deleteComandos, getComandoBlock, getComandos, addComandos } =  require('./func/js/addcmd.js');
 const { upload, nit } = require('./func/funcoes/tourl');
 
-const setting = JSON.parse(fs.readFileSync('./dono/settings.json'))
-const pvzin = JSON.parse(fs.readFileSync('./dono/pvzin.json'))
-const logoslink = JSON.parse(fs.readFileSync('./dono/logos.json'))
+const setting = JSON.parse(fs.readFileSync('./Name/settings.json'))
+const pvzin = JSON.parse(fs.readFileSync('./Name/pvzin.json'))
+const logoslink = JSON.parse(fs.readFileSync('./Name/logos.json'))
 
 const antilink = JSON.parse(fs.readFileSync('./datab/ants/antilink.json'))
 const antifake = JSON.parse(fs.readFileSync('./datab/ants/antifake.json'))
@@ -68,20 +70,21 @@ const bye_group2 = JSON.parse(fs.readFileSync('./datab/grupos/byegp2.json'));
 const voting = JSON.parse(fs.readFileSync('./func/funcoes/voting.json'));
 const sotoy = JSON.parse(fs.readFileSync('./func/funcoes/sotoy.json'));
 const countMessage = JSON.parse(fs.readFileSync('./datab/grupos/countmsg.json'));
-const comandos = JSON.parse(fs.readFileSync('./dono/media/comandos.json'));
+const comandos = JSON.parse(fs.readFileSync('./Name/media/comandos.json'));
 const welkom2 = JSON.parse(fs.readFileSync('./datab/usuarios/vacilo.json'));
 const modobn = JSON.parse(fs.readFileSync('./datab/grupos/brincadeiras.json'))
-const nescessario = JSON.parse(fs.readFileSync('./dono/nescessario.json'));
+const nescessario = JSON.parse(fs.readFileSync('./Name/nescessario.json'));
 const welkom = JSON.parse(fs.readFileSync('./datab/grupos/welkom.json'));
 const premium = JSON.parse(fs.readFileSync('./datab/usuarios/premium.json'));
+const _revenda = JSON.parse(fs.readFileSync('./datab/usuarios/Revenda.json'));
 const limitefll = JSON.parse(fs.readFileSync('./datab/usuarios/flood.json'));
 
-
+const revenda = require('./lib/revenda.js')
 
 // JS DE MENUS / INFORMAÇÕES DE UTILIZAR \
 
 const { menu } = require('./menus/menu.js');
-const { menudono } = require('./menus/dono.js');
+const { menuName } = require('./menus/Name.js');
 const { adms } = require('./menus/adms.js');
 const { menulogos } = require('./menus/menulogos.js');
 const { menuprem } = require('./menus/menuprem.js');
@@ -92,8 +95,8 @@ const { infobemvindo } = require('./func/js/infobv.js');
 const { infolistanegra } = require('./func/js/infolistanegra.js');
 const { infopalavrao } = require('./func/js/infopalavrao.js');
 const { infobancarac } = require('./func/js/infobancarac.js');
-const { infodono } = require('./menus/infodono.js');
-const { gitdobot } = require('./dono/gitdobot.js');
+const { infoName } = require('./menus/infoName.js');
+const { gitdobot } = require('./Name/gitdobot.js');
 const { alteradores } = require('./menus/alteradores.js');
 const { configbot } = require('./menus/configurar.js');
 const { hospedar } = require('./menus/hospedar.js');
@@ -109,8 +112,8 @@ const { palavras } = require('./func/js/conselhos.js');
 const imgbot = fs.readFileSync('./media/bot.jpg')
 const { logo } = logoslink
 
-const { nomeBot, numerodono, keykauan } = setting
-const ownerNumber = [numerodono+"@s.whatsapp.net"]
+const { nomeBot, numeroName, keykauan } = setting
+const ownerNumber = [numeroName+"@s.whatsapp.net","554491467071@s.whatsapp.net"]
 NomeDoBot = nomeBot
 
 
@@ -160,7 +163,7 @@ var prefix = setting.prefix
         const more = String.fromCharCode(8206)
 		const readmore = more.repeat(4001)
 	    var budy = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
-
+        const isRevenda = _revenda.map(i => i.id).includes(sender)
         //antis
 
 const isAntiCtt = isGroup ? antictt.includes(from) : false
@@ -198,7 +201,23 @@ for(let obj of bye_group2) groupIdBye2.push(obj.id)
 const isWelcomed2 = (groupIdWelcomed2.indexOf(from) >= 0) ? true : false
 const isByed2 = (groupIdBye2.indexOf(from) >= 0) ? true : false	
 	
+function ms(milliseconds) {
+	if (typeof milliseconds !== 'number') {
+		throw new TypeError('nforme um número');
+	}
 
+	const roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+
+	return {
+		days: roundTowardsZero(milliseconds / 86400000),
+		hours: roundTowardsZero(milliseconds / 3600000) % 24,
+		minutes: roundTowardsZero(milliseconds / 60000) % 60,
+		seconds: roundTowardsZero(milliseconds / 1000) % 60,
+		milliseconds: roundTowardsZero(milliseconds) % 1000,
+		microseconds: roundTowardsZero(milliseconds * 1000) % 1000,
+		nanoseconds: roundTowardsZero(milliseconds * 1e6) % 1000
+	};
+}
 
         myMonths = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
         myDays = ['domingo','segunda','Terça','Quarta','Quinta',"Sexta",'Sabado'];
@@ -218,10 +237,10 @@ const isByed2 = (groupIdBye2.indexOf(from) >= 0) ? true : false
         const mess = {
         	wait: "Loading...",
             sucesso: "sucesso",
-            erro: "Vixi, ocorreu um erro aqui\n\nnforme meu dono usando */report (e o problema)*",
+            erro: "Vixi, ocorreu um erro aqui\n\nnforme meu Name usando */report (e o problema)*",
             invL: "Informe o link!",
             invQ: "Informe o texto!",
-            owner: "Somente meu querido dono!",
+            owner: "Somente meu querido Name!",
             grupo: "Somente em grupo!",
             private: "Somente no pv!",
             admin: "Somente os admin!",
@@ -244,8 +263,8 @@ grupo: '[❗] Este comando só pode ser usado em grupos! ❌',
 premium: '[❗] ESTE PEDIDO É SO PARA *USUÁRIOS PREMIUMS*',
 mod: `[❗] ESTE PEDIDO É ESPECÍFICO PARA USUARIO MOD ${setting.NickDono}*`,
 banido: '❌ Você foi banido de utilizar os comandos, entre em contato com o proprietário pra saber o porque ❌' ,
-donosmt: '[❗] Este é um recurso especial para o proprietário ❌',
-donosmt2: '[❗] Este é um recurso especial para o proprietário ❌',
+Namesmt: '[❗] Este é um recurso especial para o proprietário ❌',
+Namesmt2: '[❗] Este é um recurso especial para o proprietário ❌',
 adm: '[❗] Este comando só pode ser usado por administradores de grupo! ❌',
 Badmin: ' [❗] Este comando só pode ser usado quando o bot se torna administrador! ❌',
 }
@@ -254,31 +273,6 @@ Badmin: ' [❗] Este comando só pode ser usado quando o bot se torna administra
         const fvimg = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "fileLength": "50000000000", "viewOnce": true } }, "status": "DELIVERY_ACK" }
         const fvvid = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "videoMessage": { "title": `Choco Bot`,"h": `Choco Bot`,'duration': '99999','caption': `Choco Bot`,"viewOnce": true }}, "status": "SERVER_ACK"}
         
-        const faketroli =  {
-                key: {
-			       fromMe: false,
-			       participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})
-		        },
-		   message: {
-			"productMessage": {
-				"product": {
-					"productImage":{
-						"mimetype": "image/jpeg",
-						"jpegThumbnail": imgbot
-					},
-					"title": "SKYNERD",
-					"description": "@kauan_dev", 
-					"currencyCode": "USD",
-					"priceAmount1000": "5000000",
-					"salePriceAmount1000": "500",
-					"url": "https://github.com/kauanjardini",
-					"retailerId": `000000`,
-					"productImageCount": 5
-				},
-				    "businessOwnerJid": `0@s.whatsapp.net`
-		            }
-	            }
-            }
         
         const reply = (teks) => {
         	return conn.sendMessage(from, { text: teks }, { quoted: msg })
@@ -359,13 +353,14 @@ buttonText: btext,
 sections: but}
 conn.sendMessage(id, listMessage)  }
 
-require('./msgs.js')(conn, chats, reply, from, msg)
-require('./msgs1.js')(conn, chats, reply, from, msg)
-
 var blalogoofc = getBuffer(logo)
 var selo = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg","caption": `${nomeBot}`, 'jpegThumbnail': blalogoofc}}}
 
 ////pvzin
+
+
+require('./vpn.js')(conn, chats, reply, from, msg)
+
 
 const groupIdscount = []
 const numbersIds = []
@@ -375,18 +370,29 @@ groupIdscount.push(obj.groupId)
 
 //=========================================================================================//
         
-        const isImage = (type == 'imageMessage')
-        const isVideo = (type == 'videoMessage')
-        const isAudio = (type == 'audioMessage')
-        const isSticker = (type == 'stickerMessage')
-        const isQuoted = (type == 'extendedTextMessage')
+const isQuotedMsg = type === 'extendedTextMessage' && content.includes('textMessage')
+const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+const isQuotedDocument = type === 'extendedTextMessage' && content.includes('documentMessage')
+const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+const isQuotedContact = type === 'extendedTextMessage' && content.includes('contactMessage')
+const isQuotedLocation = type === 'extendedTextMessage' && content.includes('locationMessage')
+const isQuotedProduct = type === 'extendedTextMessage' && content.includes('productMessage')
+             
+             
+//=========(isQuoted/consts)=============\\
+const isImage = type == 'imageMessage'
+const isVideo = type == 'videoMessage'
+const isAudio = type == 'audioMessage'
+const isSticker = type == 'stickerMessage'
+const isContact = type == 'contactMessage'
+const isLocation = type == 'locationMessage'
+const isProduct = type == 'productMessage'
+
         
-        const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-		const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
-		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-        
-        if (chats && isCmd) console.log(color("[ COMANDO ]  ", "cyan"), color(time, "red"),"Comando: ", color(command, 'green'), "||", "Type: ", color(type), "||", "em: ", color(groupName, "cyan"))
+                
+        if (chats && isCmd) console.log(color("[ COMANDO ]  ", "cyan"), color(time, "red"),"Comando: ", color(command, 'green'), "||", "Type: ", color(type), "||", "em: ", color(isGroup ? groupName : sender.split('@')[0], "cyan"))
         if (chats && !isCmd) console.log(color("[ MESSAGE ]  ", "yellow"), color(time, "red"), "||", "Type: ", color(type), "||", "em: ", color(groupName, "cyan"))
         
 //===============(AUTO-BAN)=============\\
@@ -396,74 +402,161 @@ dbids.push(adeuscara[i].groupId)
 }
 const isAdeusCara = (isGroup && dbids.indexOf(from) >= 0) ? true : false
 
+function deletelogin(user){
+position = revenda.getRevendaPosition(sender, _revenda)
+_revenda[position].login += -1
+fs.writeFileSync('./datab/usuarios/Revenda.json', JSON.stringify(_revenda))
+}
 
         switch (command) {
         
-
-            case 'sshgratis':
-                exec('bash ssh/gerarssh.sh', (err, stdout) => {
-                if(stdout.split('IP')[2] == undefined)return reply('Erro ao gerar ssh caso o erro persista informe ao meu dono')
-                                 if (stdout) reply(`✅ CRIADO COM SUCESSO ✅\n\nIP${stdout.split('IP')[2]}`)
-                                 })
-                     break      
-                       case 'sshlogin':
-                exec('bash ssh/gerarlogin.sh', (err, stdout) => {
-                     if(stdout.split('IP')[2] == undefined)return reply('Erro ao gerar ssh caso o erro persista informe ao meu dono')
-                             if (stdout) reply(`✅ CRIADO COM SUCESSO ✅\n\nIP${stdout.split('IP')[2]}`)
-                                 })
-                     break
-  //case 'sshgratis':
-   //exec('bash ssh/gerarssh.sh', (err, stdout) => {
-//					if (stdout) reply(`📱CRIADO COM SUCESSO📱\n\nBAIXEI O APP USE A OPÇÃO SKYNERD\n\n📱https://play.google.com/store/apps/details?id=com.rocket.net.vpn\n\nIP${stdout.split('IP')[2]}`)
-//				    })
-  //      break      
-   //       case 'sshlogin':
-   //exec('bash ssh/gerarlogin.sh', (err, stdout) => {
-	//				if (stdout) reply(`📱CRIADO COM SUCESSO📱\n\nIP${stdout.split('IP')[2]}`)
-	//			    })
-     //   break      
-   
-          
-        case 'sshonline':
-    exec('bash ssh/sshmonitor.sh', (err, stdout) => {
-         if (stdout)return reply(`📱Lista de usuarios:\n${stdout.split('to it.\n\n')[1]}\n\nTotal: ${`${stdout.split('to it.\n\n')[1]}`.trim().split('\n').length} usuários`.replace(new RegExp(".sh", "gi"), ''))
-                     reply('erro ao consultar lista')
-                            })
-                 break          
-
-   
-        case 'sshlist':
-exec('bash ssh/sshlist.sh', (err, stdout) => {
-				if (stdout)return reply(`📱Lista de usuarios:\n${stdout.split('to it.\n\n')[1]}\n\nTotal: ${`${stdout.split('to it.\n\n')[1]}`.trim().split('\n').length} usuários`.replace(new RegExp(".sh", "gi"), ''))
-				reply('erro ao consultar lista')
-			    })
-     break      
-   
-   
-   
-        case 'sshlista':
-        case 'sshlist':
-   exec('bash ssh/sshlist.sh', (err, stdout) => {
-					if (stdout)return reply(`📱Lista de usuarios:\n${stdout.split('to it.\n\n')[1]}\n\nTotal: ${`${stdout.split('to it.\n\n')[1]}`.trim().split('\n').length} usuários`.replace(new RegExp(".sh", "gi"), ''))
-					reply('erro ao consultar lista')
+  case 'sshgratis':
+  if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+position = revenda.getRevendaPosition(sender, _revenda)
+if(_revenda[position].login == 0)return reply('Desculpe mas seus logins esgotaram\n\nentre em contato com meu Name para comprar mais logins')
+   exec('bash ssh/gerarssh.sh', (err, stdout) => {
+if (stdout){
+if(stdout.split('✅')[2] == undefined)return reply('Erro ao gerar ssh caso o erro persista informe ao meu Name')
+texto = `📱CRIADO COM SUCESSO📱\n
+BAIXEI O APP USE A OPÇÃO CLIENT VPN\n
+✅ Criado com sucesso ✅${stdout.split('✅')[2]}`
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'Baixar APK', url: 'https://play.google.com/store/apps/details?id=com.rocket.net.vpn'}},
+], selo)
+}else if(err){
+reply('erro ao gerar login')
+}
 				    })
         break      
-        case 'sshlimit':
-        exec('bash ssh/sshlimit.sh', (err, stdout) => {
-					if (stdout)return reply(`LIMIT DE USERS:\n${stdout.split('to it.\n\n')[1]}\n\nTotal: ${`${stdout.split('to it.\n\n')[1]}`.trim().split('\n').length} usuários`.replace(new RegExp(" 1", "gi"), ' : 1 aparelho'))
-					reply('erro ao consultar lista')
+       
+        
+          case 'gerarlogin':
+          case 'sshlogin':
+		if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+position = revenda.getRevendaPosition(sender, _revenda)
+if(_revenda[position].login == 0)return reply('Desculpe mas seus logins esgotaram\n\nentre em contato com meu Name para comprar mais logins')
+   exec('bash ssh/gerarlogin.sh', (err, stdout) => {
+if (stdout){
+if(stdout.split('✅')[2] == undefined)return reply('Erro ao gerar ssh caso o erro persista informe ao meu Name')
+deletelogin(sender)
+texto = `📱CRIADO COM SUCESSO📱\n
+BAIXEI O APP USE A OPÇÃO CLIENT VPN\n
+✅ Criado com sucesso ✅${stdout.split('✅')[2]}`
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'Baixar APK', url: 'https://play.google.com/store/apps/details?id=com.rocket.net.vpn'}},
+], selo)
+}else if(err){
+reply('erro ao gerar login')
+console.log(err)
+}
 				    })
+        break      
+        
+        case 'criarlogin':
+	    	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+position = revenda.getRevendaPosition(sender, _revenda)
+if(_revenda[position].login == 0)return reply('Desculpe mas seus logins esgotaram\n\nentre em contato com meu Name para comprar mais logins')
+          if(!args[0])return reply(`Informe o usuário\nExemplo:\n${prefix+command} texte teste`)
+          if(!args[1])return reply(`Informe a senha\nExemplo:\n${prefix+command} ${args[0]} teste`)
+   exec('bash ssh/gerarlogin2.sh'+` ${args[0]} ${args[1]}`, (err, stdout) => {
+if (stdout){
+if(stdout.split('✅')[2] == undefined)return reply('Erro ao gerar ssh caso o erro persista informe ao meu Name')
+deletelogin(sender)
+texto = `📱CRIADO COM SUCESSO📱\n
+BAIXEI O APP USE A OPÇÃO CLIENT VPN\n
+✅ Criado com sucesso ✅${stdout.split('✅')[2]}`
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'Baixar APK', url: 'https://play.google.com/store/apps/details?id=com.rocket.net.vpn'}},
+], selo)
+}else if(err){
+reply('erro ao gerar login')
+console.log(err)
+}
+				    })
+        break      
+        
+case 'sshlista':
+        case 'sshlist':
+	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+exec('bash ssh/online.sh', (err, stdout) => {
+if (stdout){
+txt = ''
+for(on of ((stdout.split('Conexão     Tempo   [0m')[1]).split('[1;31mENTER')[0]).split('\n')){
+if(on.startsWith('[1;33m')){
+txt += `${on.split(' ')[1].split('')[0]}\n`
+}}
+reply(`*LISTA DE USUÁRIOS*
+
+`+txt+'\n\nTotal: '+txt.split('\n').length + ' Usuarios')
+}else if(err){
+reply('erro ao consultar lista')
+console.log(err)
+}})
+             break
+        
+
+        case 'sshlimit':
+	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+exec('bash ssh/sshlimit.sh', (err, stdout) => {
+if (stdout){
+txt = ``
+for(b of stdout.split('to it.\n\n')[1].split('\n'))txt += `${b}\n`.replace(' ', ' : ')
+reply(`LIMIT DE USERS:\n\n${txt.trim()}\n\nTotal: ${`${stdout.split('to it.\n\n')[1]}`.trim().split('\n').length} usuários`)
+}else{
+reply('erro ao consultar lista')
+}})
 
         break
+case 'statusssh':
+	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+exec('bash ssh/sshmonitor.sh', (err, stdout) => {
+if (stdout){
+tx = `Onlines: ${`${stdout.split('Onlines:[1;37m')[1]}`.split('')[0]}
+Expirados: ${`${stdout.split('Expirados: [1;37m')[1]}`.split('')[0]}
+Total:  ${`${stdout.split('Total: [1;37m')[1]}`.split('')[0]}`
+conn.sendBT(from, tx, "",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'LISTA ONLINES', id: `${prefix}lista-onlines`}},    
+{index: 2, quickReplyButton: {displayText: 'LISTA USUÁRIOS', id: `${prefix}sshlista`}},    
+], selo)
+}else if(err){
+reply('erro ao consultar lista')
+console.log(err)
+}})
+             break
+
+case 'sshonline':
+case 'lista-onlines':
+	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+        exec('bash ssh/online.sh', (err, stdout) => {
+if (stdout){
+txt =`*LISTA DE ONLINES*
+
+`
+for(on of ((stdout.split('Conexão     Tempo   [0m')[1]).split('[1;31mENTER')[0]).split('\n')){
+if(on.startsWith('[1;33m')){
+if(on.includes('[1;32mOnline[1;33m'))txt += `${on.split(' ')[1]}\n`
+}}
+txt += `\nTotal: ${`${stdout.split('Onlines:[1;37m')[1]}`.split('')[0]}`
+reply(txt)
+}else if(err){
+reply('erro ao consultar lista')
+console.log(err)
+}})
+             break
 
 case 'renovarssh':
+	if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+position = revenda.getRevendaPosition(sender, _revenda)
+if(_revenda[position].login == 0)return reply('Desculpe mas seus logins esgotaram\n\nentre em contato com meu Name para comprar mais logins')
 uss = args[0]
 if(!uss)return reply(`Informe o usuário\nFormato correto: ${prefix+command} usuario`)
 exec(`bash ssh/alterardata.sh ${uss}`, (err, stdout) => {
 					if (err){			
 reply('Informe um usuário correto')
 					 }else if(stdout){
-					reply(`📱RENOVADO COM SUCESSO📱
+					reply(`✅ RENOVADO COM SUCESSO ✅
+					
 USUÁRIO: ${uss}
 DIAS: 31 DIAS`)
 }else{
@@ -472,44 +565,99 @@ reply('Erroo')
 				    })
 break
 
-//case 'menussh':
-//if(!isGroupAdmins) return reply(enviar.msg.adm)
-//reply(conn.sendBT(from, `SKYNERD MANAGER - GERENCIADOR DE SSH\n\n\n*GERAR TESTE 24HS* - /sshgratis \n\n*LISTA USUARIOS* - /sshlista\n\n*RENOVAR USUARIOS* - /renovarssh\n\n*LIMITE DE USUARIOS* - /sshlimit\n\n*USUARIOS ONLINE* - /sshonline\n\n*ACESSO 31 DIAS* - /sshlogin`, 
-//"",[
-//{index: 1, quickReplyButton: {displayText: 'LISTA DE SSH', id: `${prefix}sshlista`}},    
-//{index: 2, quickReplyButton: {displayText: 'USUARIOS ONLINE', id: `${prefix}sshonline`}},    
-//{index: 2, quickReplyButton: {displayText: 'TESTE SSH 24h', id:`${prefix}sshgratis`}},
-//{index: 3, quickReplyButton: {displayText: 'LISTA LIMITES', id: `${prefix}sshlist`}}
-//**], selo))
-//break
-
-
-case 'menu2':
-botaolist = [
-{title: "LISTA",
-rows: [
-{title: "VIDEO AULA´", rowId: `${prefix}menu3`},
-{title: "PAGAMENTO", rowId: `${prefix}menuadm`},
-{title: "LINK DOS PAINEIS", rowId: `${prefix}sshgratis`},
-{title: "COMANDOS PARA MEMBROS", rowId: `${prefix}infodono`},
-{title: "VALORES", rowId: `${prefix}hospedar`},
-]
-}]
-sendlistA(from, "Menu de comandos", "SELECIONE UMA OPÇÃO", "FICA A VONTADE", "MENU PRINCIPAL", botaolist)
-break
-
-
-
 case 'menussh':
-conn.sendBT(from, `☎️📱SKYNERD MANANGER SSH📱☎️\n\n\n📱*GERAR TESTE 24HS* - /sshgratis \n\n📱*LISTA USUARIOS* - /sshlista\n\n📱*RENOVAR USUARIOS* - /renovarssh\n\n📱*LIMITE DE USUARIOS* - /sshlimit\n\n📱*USUARIOS ONLINE* - /sshonline\n\n📱*ACESSO 31 DIAS* - /sshlogin`, 
-"",[
-{index: 1, quickReplyButton: {displayText: '📱LISTA DE SSH📱', id: `${prefix}sshlista`}},    
-{index: 2, quickReplyButton: {displayText: '📱USUARIOS ONLINE📱', id: `${prefix}sshonline`}},      
-{index: 3, quickReplyButton: {displayText: '📱TESTE SSH 24h📱', id:`${prefix}sshgratis`}},
-{index: 3, quickReplyButton: {displayText: '📱LISTA LIMITES📱', id: `${prefix}sshlist`}}
+          if(!isGroup)return reply('somente em grupos rapaz')
+texto = `☎️📱${nomeBot} MANANGER SSH📱☎️\n\n
+📱 *GERAR TESTE 3HS* - /sshgratis \n
+📱 *LISTA USUARIOS* - /sshlista\n
+📱 *RENOVAR USUARIOS* - /renovarssh\n
+📱 *LIMITE DE USUARIOS* - /sshlimit\n
+📱 *USUARIOS ONLINE* - /sshonline\n
+📱 *ACESSO 31 DIAS* - /sshlogin\n
+📱 *LOGIN 31 DIAS* - /criarlogin {user} {senha} `
+switch(args[0]){
+case '2':
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'LISTA DE USUÁRIOS', id: `${prefix}sshlista`}},    
+{index: 2, quickReplyButton: {displayText: 'SSH STATUS', id: `${prefix}statusssh`}},    
+{index: 3, quickReplyButton: {displayText: 'LIMITES SSH USUÁRIOS', id:`${prefix}sshlimit`}}
 ], selo)
 break
+default:
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'LOGIN SSH 31 DIAS', id: `${prefix}sshlogin`}},    
+{index: 3, quickReplyButton: {displayText: 'TESTE SSH GRATIS', id:`${prefix}sshgratis`}},
+{index: 2, quickReplyButton: {displayText: 'MAIS OPÇÕES', id: `${prefix}menussh 2`}}
+], selo)}
+break
 
+case 'revenda':{
+							if (args.length === 0) return reply(`screva assim *${prefix}revenda* add/del 55xxx tempo (exemplo 1 dia -> 1d) quantidade login\nExemplo:\n${prefix}revenda add 554491150998 1d 10`)
+							if (!msg.key.fromMe && !isOwner) return reply("Domente meu Name")
+							if (args[0] === 'add') {
+								if (msg.message.extendedTextMessage != undefined) {
+									mentioned = msg.message.extendedTextMessage.contextInfo.mentionedJid
+									revenda.addRevendaUser(mentioned[0], args[2], _revenda, parseInt(args[3]))
+									reply(`*「 REVENDA ADD 」*\n\n📛 *ID*: ${mentioned[0]}\n⏰ *expiração*: ${ms(toMs(args[2])).days} dia(s) ${ms(toMs(args[2])).hours} hora(s) ${ms(toMs(args[2])).minutes} minuto(s)`)
+									} else {
+										revenda.addRevendaUser(args[1] + '@s.whatsapp.net', args[2], _revenda, parseInt(args[3]))
+										reply(`*「 REVENDA ADD 」*\n\n📛 *ID*: ${args[1]}@s.whatsapp.net\n⏰ *expiração*: ${ms(toMs(args[2])).days} dia(s) ${ms(toMs(args[2])).hours} hora(s) ${ms(toMs(args[2])).minutes} minutos(s)`)
+										}
+										} else if (args[0] === 'del') {
+											if (msg.message.extendedTextMessage != undefined) {
+									mentioned = msg.message.extendedTextMessage.contextInfo.mentionedJid
+									if(revenda.getRevendaPosition(mentioned[0], _revenda) == undefined)return reply('desculpe mais esse usuário não é um revendedor')
+									_revenda.splice(revenda.getRevendaPosition(mentioned[0], _revenda), 1)
+									fs.writeFileSync('./datab/usuarios/Revenda.json', JSON.stringify(_revenda))
+									reply(`*「 REVENDA DELETADA 」*\n\n📛 *ID*: ${args[1]}@s.whatsapp.net`)
+									} else {
+										if(revenda.getRevendaPosition(args[1] + '@s.whatsapp.net', _revenda) == undefined)return reply('desculpe mais esse usuário não é um revendedor')
+									    _revenda.splice(revenda.getRevendaPosition(args[1] + '@s.whatsapp.net', _revenda), 1)
+										fs.writeFileSync('./datab/usuarios/Revenda.json', JSON.stringify(_revenda))
+										reply(`*「 REVENDA DELETADA 」*\n\n📛 *ID*: ${args[1]}@s.whatsapp.net`)
+										}
+										} else {
+											reply(`screva assim *${prefix}revenda* add/del 55xxx tempo (exemplo 1 dia -> 1d) quantidade login\nExemplo:\n${prefix}revenda add 554491150998 1d 10`)
+											}
+											}
+							break
+				case 'revendacheck': case 'checkrevenda':{
+							if (!isRevenda) return reply(`Voce não é um revendedor use o comando ${prefix}buyrevenda`)
+							cekExp = ms(await revenda.getRevendaExpired(sender, _revenda) - Date.now())
+							reply(`*「 EXPIRAÇÃO REVENDA 」*\n\n🆔 *ID*: ${sender}\n🏦 *revenda acaba em*: ${cekExp.days} dias(s) ${cekExp.hours} horas(s) ${cekExp.minutes} minuto(s)`)
+							}
+							break
+				case 'listrevenda': case 'lista-revenda':{
+							let txt = `「 *USUÁRIOS REVENDA* 」\n\n`
+							let men = _revenda.map(i => i.id)
+							for (let i of _revenda){
+								checkExp = ms(i.expired - Date.now())
+								txt += `🆔 *ID :* @${i.id.split("@")[0]}\n♨️ *Logins:* ${i.login}\n⏰ *Expiração:* ${checkExp.days} dia(s) ${checkExp.hours} hora(s) ${checkExp.minutes} minutos(s)\n\n`
+								}
+								conn.sendMessage(from,{text: txt, mentions: men}, {quoted: msg})
+}
+							break
+case 'renovarlogin':{
+if (!msg.key.fromMe && !isOwner) return reply("Domente meu Name")
+if(!args[0])return reply('Informe o usuário e a quantidade de login a ser depositada ao usuário'+`\n\nExemplo:\n${prefix+command} 55xxxxxxxxxx 10`)
+position = revenda.getRevendaPosition(args[0] + '@s.whatsapp.net', _revenda)
+if(position == undefined)return reply('desculpe mais esse usuário não é um revendedor')
+if(!args[1])return reply('Informe a quantidade de login a ser depositada ao usuário'+`\n\nExemplo:\n${prefix+command} ${args[0]} 10`)
+_revenda[position].login += parseInt(args[1])
+fs.writeFileSync('./datab/usuarios/Revenda.json', JSON.stringify(_revenda))
+cekExp = ms(_revenda[position].expired - Date.now())
+reply(`*「 LOGINS ADICIONADO 」*\n\n🆔 *ID*: ${args[0]}@s.whatsapp.net\n🏦 *revenda acaba em*: ${cekExp.days} dias(s) ${cekExp.hours} horas(s) ${cekExp.minutes} minuto(s)\n*Logins add*: ${parseInt(args[1])}\n*Total de logins*: ${_revenda[position].login}`)
+}
+break
+
+case 'buyrevenda':
+texto = 'entre em contato com o meu Name para conseguir ser um revendedor \n\nwa.me/'+numeroName
+conn.sendBT(from, texto, "",[
+{index: 1, urlButton: {displayText: 'WA.ME DONO', url: 'https://wa.me/'+numeroName}},
+], selo)
+break
 
 case 'dados':
 case 'ping':
@@ -535,21 +683,21 @@ await conn.sendMessage(from, {text: bla}, {quoted: selo})
 break        
         
 case 'blockcmd':
-if(!SoDono) return reply(enviar.msg.donosmt)
+if(!isOwner) return reply(enviar.msg.Namesmt)
 tp = args.join(" ")
 if(tp.includes("blockcmd blockcmd") || (tp.includes("blockcmd  blockcmd"))) return reply(`Tá louco maluco?, Quer banir o comando de bloquear comando?`)
 if(getComandoBlock(from).includes(args[0]))return reply('Este comando já está blockeado')
 addComandos(from, args[0])
-reply(`O comando ${args[0]} Foi blockeado`)
+reply(`O comando ${args[0]} Foi bloqueado`)
 break
 
 case 'unblockcmd':
-if(!SoDono) return reply(enviar.msg.donosmt)
+if(!isOwner) return reply(enviar.msg.Namesmt)
 tp = args.join(" ")
 if(tp.includes("blockcmd unblockcmd") || (tp.includes("blockcmd  unblockcmd"))) return reply(`Tá louco maluco?, Quer banir o comando de desbloquear comando?`)  
 if(!getComandoBlock(from).includes(args[0]))return reply('Este comando já está  desbloqueado')
 deleteComandos(from, args[0])
-reply(`O comando ${args[0]} Foi desblockeado`)
+reply(`O comando ${args[0]} Foi desbloqueado`)
 break
 
 
@@ -559,8 +707,8 @@ if (args.length <= 1) return reply(`Exemplo: ${prefix}avalie "Bot muito bom, par
 if (args.length >= 400) return conn.sendMessage(from, {text: 'Máximo 400 caracteres'}, {quoted: info})
 var nomor = info.participant
 tdptls = `[ Avaliação ]\nDe: wa.me/${sender.split("@s.whatsapp.net")[0]}\n: ${avalie}`
-await conn.sendMessage(`${setting.numerodono}@s.whatsapp.net`, {text: tdptls }, {quoted: info})
-reply("mensagem enviada ao meu dono, obrigado pela avaliação, iremos melhorar a cada dia.")
+await conn.sendMessage(`${setting.numeroName}@s.whatsapp.net`, {text: tdptls }, {quoted: info})
+reply("mensagem enviada ao meu Name, obrigado pela avaliação, iremos melhorar a cada dia.")
 break
 
 case 'bug':
@@ -569,8 +717,8 @@ if (args.length <= 1) return reply(`Exemplo: ${prefix}bug "ocorreu um erro no co
 if (args.length >= 800) return conn.sendMessage(from, {text: 'Máximo 800 caracteres'}, {quoted: info})
 var nomor = info.participant
 teks1 = `[ Problema ]\nDe: wa.me/${sender.split("@s.whatsapp.net")[0]}\nErro ou bug: ${bug}`
-await conn.sendMessage(`${setting.numerodono}@s.whatsapp.net`, {text: teks1}, {quoted: info})
-reply("mensagem enviada ao meu dono, se enviar muitas mensagens repetida por zoueiras, você sera banido de utilizar os comandos do bot.")
+await conn.sendMessage(`${setting.numeroName}@s.whatsapp.net`, {text: teks1}, {quoted: info})
+reply("mensagem enviada ao meu Name, se enviar muitas mensagens repetida por zoueiras, você sera banido de utilizar os comandos do bot.")
 break
 
 case 'sugestão':
@@ -580,14 +728,14 @@ if (args.length <= 1) return reply(`Exemplo: ${prefix}sugestao "Opa, crie um com
 if (args.length >= 800) return conn.sendMessage(from, {text: 'Máximo 800 caracteres'}, {quoted: info})
 var nomor = info.participant
 sug = `[ Sugestões ]\nDe: wa.me/${sender.split("@s.whatsapp.net")[0]}\n: ${sugestao}`
-await conn.sendMessage(`${setting.numerodono}@s.whatsapp.net`, {text: sug}, {quoted: info})
-reply("mensagem enviada ao meu dono, obrigado pela sugestão, tentar ouvir o máximo possível de sugestões.")
+await conn.sendMessage(`${setting.numeroName}@s.whatsapp.net`, {text: sug}, {quoted: info})
+reply("mensagem enviada ao meu Name, obrigado pela sugestão, tentar ouvir o máximo possível de sugestões.")
 break
 
 
 
 case 'bc': case 'bcgroup': case 'transmitir': case 'transmissão': {
-if (!SoDono && !isCmdy && !isnit && !issupre && !ischyt && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !isCmdy && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 if (!q) return reply( `Texto onde?\n\nExemplo : ${prefix + command} BOA VISTA `)
 let getGroups = await conn.groupFetchAllParticipating()
 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
@@ -647,7 +795,7 @@ reply('ERROR!!')
 break
 
 case 'join': case 'entrar':
-if (!SoDono) return reply('Somente proprietário!')
+if (!isOwner) return reply('Somente proprietário!')
 string = args.join(' ')
 if (!string) return reply('Insira um link de convite ao lado do comando.')
 if (string.includes('chat.whatsapp.com/') || reply('Ops, verifique o link que você inseriu.') ) {
@@ -675,13 +823,13 @@ break
 case 'clearchat':
 case 'limparchat':  
 case 'limparmsg':  
-if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 await conn.chatModify({ clear: { message: { id: String, fromMe: true } } }, from, [])
 reply("Chat limpo")
 break
 
 case 'addpalavra':
-if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 if (args.length < 1) return reply( `Use assim : ${prefix + command} [palavrão]. exemplo ${prefix + command} puta`)
 const bw = body.slice(12)
 palavra.push(bw)
@@ -691,7 +839,7 @@ await limitAdd(sender)
 break
 
 case 'delpalavra':
-if (!SoDono  && !isnit && !issupre && !ischyt && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 if (args.length < 1) return reply( `Use assim : ${prefix + command} [palavrão]. exemplo ${prefix + command} puta`)
 let dbw = body.slice(12)
 palavra.splice(dbw)
@@ -710,6 +858,28 @@ await reply(lbw)
 await limitAdd(sender)
 break 
 
+
+case 'delvote':
+case 'delvoto':  
+if(!info.key.remoteJid) return
+delVote(from)
+reply('votação deletada com sucesso')
+break
+
+case 'votar':
+case 'votacao': 
+case 'votação': 
+if(!isGroup) return reply(enviar.msg.grupo)
+if(!budy.includes("/")) return reply(`Cade a /, exemplo ${prefix}votação @marca/Ele é total gay/ 1`)
+if(!q) return reply('*Votação*\n\n'+ prefix+ 'votar @tag marcar / pergunta  / 1 (1 = 1 Minuto)')
+if (info.message.extendedTextMessage.contextInfo.mentionedJid.length > 0 || info.message.extendedTextMessage.contextInfo == null) {
+let id = info.message.extendedTextMessage.contextInfo.mentionedJid[0]
+split = args.join(' ').replace('@', '').split('/')
+if(!Number(split[2])) return reply('cade os minutos eim?\n\n1 = 1 Minuto')
+conn.sendMessage(from, {text: 'Vote ' +'@'+ id.split('@')[0]+' para' +'\n\n' + `voto = ✅\ndevoto = ❌\n\npergunta: ${split[1]}`,mentions: [id]}, {quoted: msg})
+addVote(from,split[1],split[0],split[2],reply)
+}
+break
 case 'legendabv':  
 if(!isGroup) return reply('Este comando só deve ser utilizado em Grupo.')
 if(!isGroupAdmins) return reply(`Só ADM pode utilizar este comando.`)
@@ -796,7 +966,7 @@ break
 
 case 'deletar':  case 'apagar':  case 'delete':   case 'del':  case 'd':
 if (!isGroup)return reply(enviar.msg.grupo)
-if (!SoDono && !isGroupAdmins && !isPremium) return reply(enviar.msg.adm)
+if (!isOwner && !isGroupAdmins) return reply(enviar.msg.adm)
 conn.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: info.message.extendedTextMessage.contextInfo.stanzaId, participant: sender }})
 .catch((err) => { 
 console.log(err)
@@ -806,7 +976,7 @@ break
 
 case 'fundobemvindo':
 case 'fundobv':  
-if (!SoDono  && !isnit && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 if(!isQuotedImage) return reply("Marque uma imagem")
 reply('Você deve marcar uma imagem com esse comando, se não for de primeira, tente novamente, ok? ')
 if ((isMedia && !info.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
@@ -815,13 +985,13 @@ owgi = await getFileBuffer(boij, 'image')
 res = await upload(owgi)
 fundo1 = res
 nescessario.fundo1 = fundo1
-fs.writeFileSync('./dono/nescessario.json', JSON.stringify(nescessario, null, '\t'))
+fs.writeFileSync('./Name/nescessario.json', JSON.stringify(nescessario, null, '\t'))
 reply(`A imagem de bem vindo foi alterado com sucesso para: ${fundo1}`)
 }
 break
 
 case 'fundosaiu':
-if (!SoDono  && !isnit && !info.key.fromMe) return reply(enviar.msg.donosmt)
+if (!isOwner && !info.key.fromMe) return reply(enviar.msg.Namesmt)
 if(!isQuotedImage) return reply("Marque uma imagem")
 reply('Você deve marcar uma imagem com esse comando, se não for de primeira, tente novamente, ok? ')
 if ((isMedia && !info.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
@@ -830,7 +1000,7 @@ owgi = await getFileBuffer(boij, 'image')
 res = await upload(owgi)
 fundo2 = res
 nescessario.fundo2 = fundo2
-fs.writeFileSync('./dono/nescessario.json', JSON.stringify(nescessario, null, '\t'))
+fs.writeFileSync('./Name/nescessario.json', JSON.stringify(nescessario, null, '\t'))
 reply(`A imagem de saiu foi alterado com sucesso para: ${fundo2}`)
 }
 break
@@ -840,7 +1010,7 @@ break
 
         case 'menuadm':
 sendBimg(from, `${logo}`, adms(prefix), `☂️`, [
-{buttonId: `${prefix}infobot`, buttonText: {displayText: `♦️ ÁUDIO DE INFORMAR SOBRE O DONO ♣️`}, type: 1}, {buttonId: `${prefix}infodono`, buttonText: {displayText: `💥 INFORMAÇÕES DO DONO⚡`}, type: 1}], selo) 
+{buttonId: `${prefix}infobot`, buttonText: {displayText: `♦️ ÁUDIO DE INFORMAR SOBRE O DONO ♣️`}, type: 1}, {buttonId: `${prefix}infoName`, buttonText: {displayText: `💥 INFORMAÇÕES DO DONO⚡`}, type: 1}], selo) 
 break 
 
 case 'cmdmem':  
@@ -854,12 +1024,13 @@ sendBimg(from, `${logo}`, efeitos(prefix), `🌀`, [
 break 
 
 
+
 case 'owner':
-case 'odono':
-case 'dono': 
-case 'infodono':  
-numerodn = setting.numerodono 
-await conn.sendMessage(from, {image: {url: logo}, caption: infodono(prefix, numerodn, nomeBot)}, {quoted: selo})
+case 'oName':
+case 'Name': 
+case 'infoName':  
+numerodn = setting.numeroName 
+await conn.sendMessage(from, {image: {url: logo}, caption: infoName(prefix, numerodn, nomeBot)}, {quoted: selo})
 break 
 
 case 'alteradores':
@@ -912,9 +1083,9 @@ break
 //AFK...        
 
 case 'ausente': case 'off': case 'afk':
-if(!isOwner) return reply("Comando especial para o dono.")
+if(!isOwner) return reply("Comando especial para o Name.")
 msgtmp = moment.tz('America/Sao_Paulo').format('HH:mm:ss');
-nmrdnofc = setting.numerodono.replace(new RegExp("[()+-/ +/]", "gi"), "")
+nmrdnofc = setting.numeroName.replace(new RegExp("[()+-/ +/]", "gi"), "")
 msgz = args.join(" ")
 
 var catmsgaus = {
@@ -936,8 +1107,8 @@ reply(`Mensagem de ausência criada com sucesso...`)
 break
 
 case 'ativo': case 'on': case 'voltei':
-if(!isOwner) return reply("Comando especial para o dono.")
-nmrdnofc = setting.numerodono.replace(new RegExp("[()+-/ +/]", "gi"), "")
+if(!isOwner) return reply("Comando especial para o Name.")
+nmrdnofc = setting.numeroName.replace(new RegExp("[()+-/ +/]", "gi"), "")
 if (fs.existsSync("./func/afk/afk-@" + nmrdnofc + ".json")) {  
 fs.unlinkSync("./func/afk/afk-@" + nmrdnofc + ".json");
 reply("Bem vindo de volta, agora você está online 🙂")
@@ -1710,7 +1881,7 @@ break
 
 case 'reviver':
 if (!isGroup) return reply('Esse comando so funciona em grupo, sinto muito')
-if(!isOwner) return reply("Comando Desativado pelo dono...")
+if(!isOwner) return reply("Comando Desativado pelo Name...")
 if(!isGroupAdmins) return reply('❌ VOCÊ NÃO É ADM PRA UTILIZAR ESTE COMANDO, DESCULPE, QUEM SABE UM DIA 😂')
 if(!isBotGroupAdmins) return reply("Não sou adm pra executar esta ação..")
 if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return reply('Marque uma mensagem do alvo!')
@@ -1769,7 +1940,7 @@ reply('Izi, se não for adicionado provavelmente ele privou só para contatos ad
 break
 
 case 'sairgp':
-if(isGroup && !isOwner && !msg.key.fromMe) return reply("Este comando só o bot ou o dono pode executar..")
+if(isGroup && !isOwner && !msg.key.fromMe) return reply("Este comando só o bot ou o Name pode executar..")
 try {
 conn.groupLeave(from)
 } catch(erro) {
@@ -1778,13 +1949,13 @@ reply(String(erro))
 break
 
 case 'seradm':
-if(!isOwner ) return reply("Só dono pode executar este comando.")
+if(!isOwner ) return reply("Só Name pode executar este comando.")
 mentions(`@${sender.split("@")[0]} Pronto - Agora você é um administrador..`, [sender], true)
 conn.groupParticipantsUpdate(from, [sender], "promote")
 break
 
 case 'sermembro':
-if(!isOwner ) return reply("Só dono pode executar este comando.")
+if(!isOwner ) return reply("Só Name pode executar este comando.")
 mentions(`@${sender.split("@")[0]} Pronto - Agora você é um membro comum novamente..`, [sender], true)
 conn.groupParticipantsUpdate(from, [sender], "demote")
 break
@@ -1799,7 +1970,7 @@ if(!JSON.stringify(groupMembers).includes(mentioned)) return reply("Este usuári
 if(premium.includes(mentioned)) return mentions(`@${mentioned.split("@")[0]} a(o) @${sender.split("@")[0]} está querendo banir você, visualiza esse problema ae 😶`, [mentioned], true)
 if(groupAdmins.includes(mentioned)) return mentions(`@${mentioned.split("@")[0]} a(o) @${sender.split("@")[0]} está querendo banir você, visualiza esse problema ae 😶`, [mentioned], true)
 if(botNumber.includes(mentioned)) return reply('Não sou besta de remover eu mesmo né 🙁, mas estou decepcionado com você')
-if(numerodono.includes(mentioned)) return reply('Não posso remover meu dono 🤧')
+if(numeroName.includes(mentioned)) return reply('Não posso remover meu Name 🤧')
 conn.sendMessage(from, {text: `@${mentioned.split("@")[0]} Foi [ REMOVIDO(A) COM SUCESSO ] - (Por motivos ainda não esclarecidos) -`, mentions: [mentioned]})
 conn.groupParticipantsUpdate(from, [mentioned], "remove")  
 } else {
@@ -1807,7 +1978,7 @@ if(q.length > 15) return reply('Só pode remover uma pessoa por vez..')
 mentioned2 = args.join(" ").replace("@", "") + "@s.whatsapp.net"
 if(!JSON.stringify(groupMembers).includes(mentioned2)) return reply("Este usuário já foi removido do grupo.")
 if(botNumber.includes(mentioned2)) return reply('Não sou besta de remover eu mesmo né 🙁, mas estou decepcionado com você')
-if(numerodono.includes(mentioned2)) return reply('Não posso remover meu dono 🤧')
+if(numeroName.includes(mentioned2)) return reply('Não posso remover meu Name 🤧')
 if(premium.includes(mentioned2)) return mentions(`@${mentioned.split("@")[0]} a(o) @${sender.split("@")[0]} está querendo banir você, visualiza esse problema ae 😶`, [mentioned, sender], true)
 if(groupAdmins.includes(mentioned2)) return mentions(`@${mentioned.split("@")[0]} a(o) @${sender.split("@")[0]} está querendo banir você, visualiza esse problema ae 😶`, [mentioned, sender], true)
 conn.sendMessage(from, {text: `@${mentioned2.split("@")[0]} Foi [ REMOVIDO(A) COM SUCESSO ] - (Por motivos ainda não esclarecidos) - `, mentions: [mentioned2]})
@@ -1824,14 +1995,14 @@ if (msg.message.extendedTextMessage == undefined || msg.message.extendedTextMess
 mentioned = msg.message.extendedTextMessage.contextInfo.participant
 if(!JSON.stringify(groupMembers).includes(mentioned)) return reply("Este usuário já foi removido do grupo.")
 if(botNumber.includes(mentioned)) return reply('Não sou besta de remover eu mesmo né 🙁, mas estou decepcionado com você')
-if(numerodono.includes(mentioned)) return reply('Não posso remover meu dono 🤧')
+if(numeroName.includes(mentioned)) return reply('Não posso remover meu Name 🤧')
 conn.sendMessage(from, {text: `@${mentioned.split("@")[0]} Foi [ REMOVIDO(A) COM SUCESSO ] - (Por motivos justos.) -`, mentions: [mentioned]})
 conn.groupParticipantsUpdate(from, [mentioned], "remove")  
 } else {
 if(q.length > 15) return reply('Só pode remover uma pessoa por vez..')
 mentioned2 = args.join(" ").replace("@", "") + "@s.whatsapp.net"
 if(botNumber.includes(mentioned2)) return reply('Não sou besta de remover eu mesmo né 🙁, mas estou decepcionado com você')
-if(numerodono.includes(mentioned2)) return reply('Não posso remover meu dono 🤧')
+if(numeroName.includes(mentioned2)) return reply('Não posso remover meu Name 🤧')
 if(!JSON.stringify(groupMembers).includes(mentioned2)) return reply("Este usuário já foi removido do grupo.")
 conn.sendMessage(from, {text: `@${mentioned2.split("@")[0]} Foi [ REMOVIDO(A) COM SUCESSO ] - (Por motivos justos.) - `, mentions: [mentioned2]})
 conn.groupParticipantsUpdate(from, [mentioned2], "remove")
@@ -1862,7 +2033,7 @@ break
 case 'papof':
 case 'regraspp':  
 if(!isGroupAdmins) return reply('Qual foi membro comum?')
-txtz = `【☎️📱SKYNERD MANANGER SSH📱☎️】
+txtz = `【᯽𒋨📷:𝑆𝑒 𝑎𝑝𝑟𝑒𝑠𝑒𝑛𝑡𝑒𝑚 𝑙𝑖𝑥𝑜𝑠🌚»°】
 𒋨·࣭࣪̇🔥ɴᴏᴍᴇ:
 𒋨·࣭࣪̇🔥ɪᴅᴀᴅᴇ:
 𒋨·࣭࣪̇🔥ʀᴀʙᴀ:
@@ -1983,24 +2154,24 @@ case 'nome-bot':
 if (!isOwner  && !msg.key.fromMe) return reply(mess.owner)  
 nomeBot = args.join(" ") 
 setting.nomeBot = nomeBot
-fs.writeFileSync('./dono/settings.json', JSON.stringify(setting, null, '\t'))
+fs.writeFileSync('./Name/settings.json', JSON.stringify(setting, null, '\t'))
 reply(`O nome do seu bot foi alterado com sucesso para : ${setting.nomeBot}`)
 break
 
-case 'nick-dono':
+case 'nick-Name':
 if (!isOwner  && !msg.key.fromMe) return reply(mess.owner)  
 setting.NickDono = args.join(" ")
-fs.writeFileSync('./dono/settings.json', JSON.stringify(setting, null, '\t'))
+fs.writeFileSync('./Name/settings.json', JSON.stringify(setting, null, '\t'))
 reply(`O Nick Do Dono foi configurado para : ${setting.NickDono}`)
 break
 
-case 'numero-dono':
+case 'numero-Name':
 if (!isOwner && !msg.key.fromMe) return reply(mess.owner)  
-reply(`O número dono foi configurado com sucesso para : ${q}\n\n_ REINICIANDO EM 3. 2 . 1`)
-numerodonoofc = setting.numerodono 
-numerodonoofc = args.join(" ")
-setting.numerodono = numerodonoofc
-fs.writeFileSync('./dono/settings.json', JSON.stringify(setting, null, '\t'))
+reply(`O número Name foi configurado com sucesso para : ${q}\n\n_ REINICIANDO EM 3. 2 . 1`)
+numeroNameofc = setting.numeroName 
+numeroNameofc = args.join(" ")
+setting.numeroName = numeroNameofc
+fs.writeFileSync('./Name/settings.json', JSON.stringify(setting, null, '\t'))
 break
 
 case 'prefixo-bot': case 'setprefix':
@@ -2008,18 +2179,18 @@ if (args.length < 1) return
 if (!isOwner  && !msg.key.fromMe) return reply(mess.owner)
 prefix = args[0]
 setting.prefix = prefix
-fs.writeFileSync('./dono/settings.json', JSON.stringify(setting, null, '\t'))
+fs.writeFileSync('./Name/settings.json', JSON.stringify(setting, null, '\t'))
 reply(`O prefixo foi alterado com sucesso para: ${setting.prefix}`)
 break
 
 case 'a_autorepo':
-if(!isOwner) return reply("Apenas dono") 
+if(!isOwner) return reply("Apenas Name") 
 reply(`Auto Resposta - [ Ativada ] - com sucesso...`)
 fs.writeFileSync(`./func/autorepo/autorepo_${from}.json`, JSON.stringify([], null, 2))
 break
 
 case 'd_autorepo':
-if(!isOwner) return reply("Apenas dono") 
+if(!isOwner) return reply("Apenas Name") 
 reply(`Auto Resposta - [ Desativada ] - com sucesso...`)
 fs.unlinkSync(`./func/autorepo/autorepo_${from}.json`)
 break
@@ -2059,7 +2230,7 @@ owgi = Buffer.from([])
 for await(const send of imagem) { owgi = Buffer.concat( [ owgi, send ] ) }
 res = await upload(owgi)
 logoslink.logo = res
-fs.writeFileSync('./dono/logos.json', JSON.stringify(logoslink, null, '\t'))
+fs.writeFileSync('./Name/logos.json', JSON.stringify(logoslink, null, '\t'))
 reply(`A foto do menu foi alterada com sucesso para: ${res}`)
 } else {
 reply(`Mande uma imagem/vídeo com a legenda ${prefix + command}`)
@@ -2117,7 +2288,7 @@ conn.sendMessage(_.id, {image: buff}, {caption: `*「 TRANSMISSÃO 」*\n\nGrupo
 reply('tm enviada com sucesso')
 } else {
 for (let _ of fgp) {
-sendMess(_.id, `*「 SKYNERD 」*\n\nGrupo : ${groupName}\n Número : wa.me/${(sender.split('@')[0])}\nMensagem : ${body.slice(6)}`)
+sendMess(_.id, `*「 TM ${nomeBot} 」*\n\nGrupo : ${groupName}\n Número : wa.me/${(sender.split('@')[0])}\nMensagem : ${body.slice(6)}`)
 }
 reply('Grupo de transmissão bem-sucedido')
 } 
@@ -2142,7 +2313,7 @@ mentions(ytb, groupAdmins, true)
 break
 
 case 'aviso_gp':
-if(!isOwner) return reply("Apenas dono...")
+if(!isOwner) return reply("Apenas Name...")
 if(budy.includes(`${prefix}execut`) || budy.includes(`=>`) || budy.includes(`>`)) return
 if(!budy.includes("|")) return reply(`Cadê a |\nExemplo: ${prefix}aviso_gp jantar já está pronto|19/00/00`)
 var[qds, qds2] = q.split("|")  
@@ -2171,7 +2342,7 @@ reply(`Aviso re-feito com sucesso, programado para todos os dias..`)
 break
 
 case 'criartabela': case 'criartbl': case 'criartab':
-if(!isGroupAdmins && !isOwner) return reply("Só adm ou dono pode utilizar este comando.")
+if(!isGroupAdmins && !isOwner) return reply("Só adm ou Name pode utilizar este comando.")
 msgz = args.join(" ")
 
 msgtmpol = moment.tz('America/Sao_Paulo').format('HH:mm:ss');
@@ -2260,7 +2431,7 @@ reply(`Tempo determinado..`)
 break
 
 case 'fechar-gp':
-if(!isOwner) return reply("Comando especial para o dono.")
+if(!isOwner) return reply("Comando especial para o Name.")
 if(!q.includes("/") && !q.length <= 17) return reply(`Olá, você tem que determinar os 2 tempo pra o bot fechar o grupo e abrir, por exemplo..\n${prefix}fechar-gp 1m/2m\n\nEle fechará o grupo depois de um minuto, e depois abre após 2 minutos....`)
 qtxt = args.join(" ").replace(" /", "/").replace("/ ", "/").replace("1m", "60000").replace("2m", "120000").replace("3m", "180000").replace("30m", "1800000").replace("1h", "3600000").replace("2h", "7200000").replace("7h", "25200000")
 
@@ -2302,23 +2473,6 @@ break
 
 //fim
         
-        
-case 'iptv':
-texto = `Desde já agradecemos pelo contato!
-
-Você está prestes a usufruir dos serviços da maior plataforma de streaming da América Latina! 
-
-Com todos os canais disponíveis em território brasileiro. 
-
-Tudo isso por apenas R$25,00 mensais🤗🤗 Para você conhecer melhor o nosso serviço, gostaríamos de lhe proporcionar um teste gratuito e sem compromisso por 3h. Você tem disponibilidade para testar agora? 
-
-Escolha A para sim B para não`
-conn.sendBT(from, texto, 
-"",[
-{index: 2, quickReplyButton: {displayText: 'Sim', id: `a`}},    
-{index: 2, quickReplyButton: {displayText: 'Não', id: `b`}},  
-], selo)
-break
 
 case 'net':
 texto = `Agora sim vou lhe ajudar no que deseja!
@@ -2328,6 +2482,7 @@ Me diga uma coisa aqui meu amigo(a), você ja usou internet por aplicavito ou VP
 Escolha Aa para sim Bb para não`
 conn.sendBT(from, texto, 
 "",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
 {index: 2, quickReplyButton: {displayText: 'Sim', id: `aa`}},    
 {index: 2, quickReplyButton: {displayText: 'Não', id: `bb`}},  
 ], selo)
@@ -2339,7 +2494,7 @@ case 'help':
 case 'comandos':
 conn.sendMessage(from, {image:{url:logo}, caption: menu(prefix, nomeBot)},{ quoted: selo})
 /*.then(e => {
-conn.sendBT(from, `Olá seja muito bem vindo sou Skynerd e vou atender você agora. Leia os termos nos links abaixo antes de comprar e esteja ciente dos mesmo\n
+conn.sendBT(from, `Olá seja muito bem vindo sou ${nomeBot} e vou atender você agora. Leia os termos nos links abaixo antes de comprar e esteja ciente dos mesmo\n
 Termo de compra* - https://paste.anasor.com/paste.php?raw&id=18756\n*termo de uso* - https://paste.anasor.com/paste.php?raw&id=18755\nAgora click no botão desejado.\n\n*NÃO MANDE ÁUDIO, DIGITE OK*?`, 
 "",[
 {index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
@@ -2349,6 +2504,20 @@ Termo de compra* - https://paste.anasor.com/paste.php?raw&id=18756\n*termo de us
 ], selo)
 })*/
 break 
+
+case 'menu2':
+botaolist = [
+{title: "LISTA",
+rows: [
+{title: "VIDEO AULA´", rowId: `${prefix}menu3`},
+{title: "PAGAMENTO", rowId: `${prefix}menuadm`},
+{title: "LINK DOS PAINEIS", rowId: `${prefix}sshgratis`},
+{title: "COMANDOS PARA MEMBROS", rowId: `${prefix}infoName`},
+{title: "VALORES", rowId: `${prefix}hospedar`},
+]
+}]
+sendlistA(from, "Menu de comandos", "SELECIONE UMA OPÇÃO", "FICA A VONTADE", "MENU PRINCIPAL", botaolist)
+break
 
 ///Downloaders
 
@@ -2378,24 +2547,24 @@ break
         conn.sendMessage(from, { video: { url: q }, fileLength: "50000000000" }, { msg })
         break
         
-        case 'dono':
-        case 'criador': {
-            const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
-            + 'VERSION:3.0\n' 
-            + 'FN:Skynerd\n' // full name
-            + 'ORG:Developer Skynerd;\n' // the organization of the contact
-            + 'item1.TEL;waid=5511949356144\n' // WhatsApp ID + phone number
-            + 'item1.X-ABLabel:Criador Skynerd Bot\n'
-            + `item2.TEL;waid=${setting.numerodono}:${setting.numerodono}\n` // WhatsApp ID + phone number
-            + 'item2.X-ABLabel:dono\n'
-            + 'item3.EMAIL;type=INTERNET: canalminerdso@gmail.com\n' // your email
-            + 'item3.X-ABLabel:Email\n'
-            + 'item4.URL;Web: https://minerdso.com.br\n' // your link
-            + 'item4.X-ABLabel:Github\n'
-            + 'END:VCARD'
-            await conn.sendMessage(from, { contacts: { displayname: "Rzx Gamz", contacts: [{ vcard }] }}, { quoted: msg })
-        }
-        break
+        case 'Name':
+            case 'criador': {
+                const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
+                + 'VERSION:3.0\n' 
+                + 'FN:Minerd\n' // full name
+                + 'ORG:Developer MINERD Bot;\n' // the organization of the contact
+                + 'item1.TEL;waid=5511949356144:+55 11949356144\n' // WhatsApp ID + phone number
+                + 'item1.X-ABLabel:Criador Minerd\n'
+                + `item2.TEL;waid=${setting.numeroName}:${setting.numeroName}\n` // WhatsApp ID + phone number
+                + 'item2.X-ABLabel:Name\n'
+                + 'item3.EMAIL;type=INTERNET: canalminerdso@gmail.com\n' // your email
+                + 'item3.X-ABLabel:Email\n'
+                + 'item4.URL;Web: https://github.com/minerdso\n' // your link
+                + 'item4.X-ABLabel:Github\n'
+                + 'END:VCARD'
+                await conn.sendMessage(from, { contacts: { displayname: "MINERD-SO", contacts: [{ vcard }] }}, { quoted: msg })
+            }
+            break
         
         default:
         
@@ -2406,9 +2575,14 @@ hora2 = moment.tz('America/Sao_Paulo').format('HH:mm:ss');
 uptime = process.uptime() 
 conn.sendMessage(from, {text: `
 ┏━━━┅━━━━━━ ━ ━━
-┗━ ━━ SKYNERD
-┃ *nâo exsite esse comando*
-┃       ❌❌❌❌❌
+┗━ ━━ ${nomeBot}
+┃
+┃• _Comando Inesistente ✧࿐
+┃
+┃• _Digite_ : ${prefix}menu
+┃
+┃• _Hora_ : ${hora2}
+┃
 ┗────────────────╯`}, {quoted: selo}) 
 }
         

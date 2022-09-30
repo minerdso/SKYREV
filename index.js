@@ -4,8 +4,7 @@ const fetch = require('node-fetch')
 const { exec } = require('child_process');
 
 qrcode = './session-md.json'
-
-
+        
 const { default: makeWASocket, generateWAMessageFromContent, DisconnectReason, AnyMessageContent, relayMessage, delay, useSingleFileAuthState, useMultiFileAuthState, makeInMemoryStore, fetchLatestBaileysVersion} = require('@adiwajshing/baileys')
 const store = makeInMemoryStore({ logger: P().child({ level: 'silent', stream: 'store' }) })
 store.readFromFile('./baileys-md.json')
@@ -25,11 +24,11 @@ const { state, saveCreds } = await useMultiFileAuthState('./session-md.json')
         syncFullHistory: true,
         version
     })
-    
     store.bind(conn.ev)
+        
 
     conn.ev.on('messages.upsert', async m => {
-//    if(m.type != 'notify')return
+    if(m.type != 'notify')return
         const msg = m.messages[0]
         require('./main.js')(conn, msg, m)
         require('./main2.js')(conn, msg, m)
@@ -92,9 +91,7 @@ hydratedContentText: text1,
 hydratedFooterText: desc1,
 hydratedButtons: but,
 contextInfo: {}
-}
-}
-}}}
+}}}}}
 conn.relayMessage(id, content, {messageId: require('@adiwajshing/baileys').generateMessageID(), additionalAttributes: { }},{ quoted: vr ? vr : null});
 }
 

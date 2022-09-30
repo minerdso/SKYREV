@@ -231,15 +231,14 @@ var selo = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { 
 ////pvzin
 
 
+
 if(!isGroup && !msg.key.fromMe && ['opa', 'bom dia', 'boa tarde', 'boa noite', 'oi', 'ola', 'minerd'].indexOf(budy.toLowerCase()) != -1){ 
 conn.sendBT(from, `Olá seja muito bem vindo sou Skynerd e vou atender você agora. Leia os termos nos links abaixo antes de comprar e esteja ciente dos mesmo\n
 Termo de compra* - https://paste.anasor.com/paste.php?raw&id=18756\n*termo de uso* - https://paste.anasor.com/paste.php?raw&id=18755\nAgora click no botão desejado.\n\n*NÃO MANDE ÁUDIO, DIGITE OK*?`, 
 "",[
-{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/canalminerso'}},
-{index: 2, urlButton: {displayText: 'CANAL YOUTUBE', url: 'https://www.youtube.com/channel/UCoWLagMhuKiuQfbCzdDQYhg'}},
-{index: 1, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
-{index: 2, quickReplyButton: {displayText: 'SOBRE A IPTV', id: `${prefix}iptv`}},  
-{index: 3, quickReplyButton: {displayText: 'MENU PRINCIPAL', id:`${prefix}menu2`}}
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
+{index: 3, quickReplyButton: {displayText: 'TESTE SSH GRATIS', id:`${prefix}sshgratis`}}
 ], selo)
 }else if(!isCmd && !isGroup && !msg.key.fromMe){
 if(pvzin.length < 1||!pvzin.map(i => i.id).includes(sender)){
@@ -247,28 +246,22 @@ if(pvzin.length < 1||pvzin.map(i => i.id).indexOf(sender) < 0){
 conn.sendBT(from, `Olá seja muito bem vindo sou Skynerd e vou atender você agora. Leia os termos nos links abaixo antes de comprar e esteja ciente dos mesmo\n
 Termo de compra* - https://paste.anasor.com/paste.php?raw&id=18756\n*termo de uso* - https://paste.anasor.com/paste.php?raw&id=18755\nAgora click no botão desejado.\n\n*NÃO MANDE ÁUDIO, DIGITE OK*?`, 
 "",[
-    {index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/canalminerso'}},
-    {index: 2, urlButton: {displayText: 'CANAL YOUTUBE', url: 'https://www.youtube.com/channel/UCoWLagMhuKiuQfbCzdDQYhg'}},
-    {index: 1, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
-    {index: 2, quickReplyButton: {displayText: 'SOBRE A IPTV', id: `${prefix}iptv`}},  
-    {index: 3, quickReplyButton: {displayText: 'MENU PRINCIPAL', id:`${prefix}menu2`}}
-    ], selo)
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
+{index: 3, quickReplyButton: {displayText: 'TESTE SSH GRATIS', id:`${prefix}sshgratis`}}], selo)
 pvzin.push({id:sender, date:date})
 fs.writeFileSync('./dono/pvzin.json', JSON.stringify(pvzin))
 }else if(pvzin[pvzin.map(i => i.id).indexOf(sender)].date != date){
 conn.sendBT(from, `Olá seja muito bem vindo sou Skynerd e vou atender você agora. Leia os termos nos links abaixo antes de comprar e esteja ciente dos mesmo\n
 Termo de compra* - https://paste.anasor.com/paste.php?raw&id=18756\n*termo de uso* - https://paste.anasor.com/paste.php?raw&id=18755\nAgora click no botão desejado.\n\n*NÃO MANDE ÁUDIO, DIGITE OK*?`, 
 "",[
-    {index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/canalminerso'}},
-    {index: 2, urlButton: {displayText: 'CANAL YOUTUBE', url: 'https://www.youtube.com/channel/UCoWLagMhuKiuQfbCzdDQYhg'}},
-    {index: 1, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
-    {index: 2, quickReplyButton: {displayText: 'SOBRE A IPTV', id: `${prefix}iptv`}},  
-    {index: 3, quickReplyButton: {displayText: 'MENU PRINCIPAL', id:`${prefix}menu2`}}
-    ], selo)
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'SOBRE A INTERNET', id: `${prefix}net`}},    
+{index: 3, quickReplyButton: {displayText: 'TESTE SSH GRATIS', id:`${prefix}sshgratis`}}], selo)
+
 pvzin.push({id:sender, date:date})
 fs.writeFileSync('./dono/pvzin.json', JSON.stringify(pvzin))
 }}}
-
 
 //=================================\\
 
